@@ -1,0 +1,14 @@
+AudioStreamPlayer2D
+Area2D
+CollisionShape2D
+AnimationPlayer
+Sprite2D
+CharacterBody2D
+RigidBody2D
+AudioStreamPlayer
+Camera2D
+VideoStreamPlayer
+Control
+CollisionPolygon2D
+Label
+ColorRect

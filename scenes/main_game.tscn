@@ -1,0 +1,100 @@
+[gd_scene format=3 uid="uid://xy7x6eeb2vm1"]
+
+[ext_resource type="Script" uid="uid://cccfe8yfg6rwj" path="res://scenes/main_game.gd" id="1_0rdsr"]
+[ext_resource type="PackedScene" uid="uid://csvqm72t55ip" path="res://scenes/player.tscn" id="3_d2op2"]
+[ext_resource type="Texture2D" uid="uid://dpvlh08we47v1" path="res://assets/Try.png" id="3_ipu61"]
+[ext_resource type="Texture2D" uid="uid://urug4jk0r10o" path="res://assets/map2.png" id="3_ygxny"]
+[ext_resource type="PackedScene" uid="uid://w0p3vybnbrq0" path="res://scenes/spider.tscn" id="5_70vka"]
+[ext_resource type="Script" uid="uid://ctx31pf1l8qli" path="res://scenes/perspective_zone.gd" id="6_wi4c7"]
+[ext_resource type="Texture2D" uid="uid://dr14shwywn8o3" path="res://assets/black gradient.png" id="6_ygxny"]
+[ext_resource type="AudioStream" uid="uid://dvobq3nityude" path="res://assets/sound_maingame.wav" id="7_wi4c7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0rdsr"]
+size = Vector2(1660, 21)
+
+[node name="MainGame" type="Node2D" unique_id=152549960]
+script = ExtResource("1_0rdsr")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=799261376]
+
+[node name="Map1" type="Sprite2D" parent="." unique_id=1335916092]
+position = Vector2(31, -8)
+scale = Vector2(0.7751967, 0.666379)
+texture = ExtResource("3_ipu61")
+centered = false
+
+[node name="Map2" type="Sprite2D" parent="." unique_id=1487862702]
+position = Vector2(1256, 1)
+scale = Vector2(0.9392356, 0.47298685)
+texture = ExtResource("3_ygxny")
+centered = false
+
+[node name="Player" parent="." unique_id=249151801 instance=ExtResource("3_d2op2")]
+position = Vector2(-145, -49)
+perspective_bottom_y = 351.0
+
+[node name="Spider" parent="." unique_id=1564601214 instance=ExtResource("5_70vka")]
+position = Vector2(1179.0001, 229.00002)
+rotation = 0.37974873
+scale = Vector2(0.47713456, 0.41312802)
+
+[node name="PlayerSpawn" type="Marker2D" parent="." unique_id=1707637133]
+position = Vector2(477, 355)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1837830155]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=766461665]
+position = Vector2(832, 377)
+shape = SubResource("RectangleShape2D_0rdsr")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=1126841232]
+position = Vector2(2154, 377)
+shape = SubResource("RectangleShape2D_0rdsr")
+
+[node name="Black Gra_Left" type="Sprite2D" parent="StaticBody2D" unique_id=26555746]
+position = Vector2(-35.999996, 0)
+scale = Vector2(0.23911332, 0.19931951)
+texture = ExtResource("6_ygxny")
+centered = false
+
+[node name="Black Gra3_Cen_R" type="Sprite2D" parent="StaticBody2D" unique_id=143641151]
+position = Vector2(1260, -1.999999)
+scale = Vector2(0.13240741, 0.18049271)
+texture = ExtResource("6_ygxny")
+centered = false
+
+[node name="Black Gra4_Cen_L" type="Sprite2D" parent="StaticBody2D" unique_id=1167202769]
+position = Vector2(1262, 449)
+rotation = 3.1465828
+scale = Vector2(0.18206072, 0.1801938)
+texture = ExtResource("6_ygxny")
+centered = false
+
+[node name="Black Gra2" type="Sprite2D" parent="StaticBody2D" unique_id=1384203829]
+position = Vector2(-33.99997, 459.00003)
+rotation = -1.5711815
+scale = Vector2(0.060106944, 1.1480076)
+texture = ExtResource("6_ygxny")
+centered = false
+
+[node name="Black Gra3" type="Sprite2D" parent="StaticBody2D" unique_id=1506466864]
+position = Vector2(2829.0002, -13.999999)
+rotation = -4.7123494
+scale = Vector2(0.060106944, 1.1480076)
+texture = ExtResource("6_ygxny")
+centered = false
+
+[node name="PerspectiveZone" type="Area2D" parent="." unique_id=324594839]
+position = Vector2(46, 400)
+script = ExtResource("6_wi4c7")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PerspectiveZone" unique_id=1069447504]
+polygon = PackedVector2Array(439, -105, -27, -13, 2778, -13, 2281, -92, 1858, -93, 1402, -74, 911, -42, 847, -98)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1168219706]
+stream = ExtResource("7_wi4c7")
+volume_db = -5.986
+pitch_scale = 0.84
+autoplay = true
+
+[connection signal="body_exited" from="PerspectiveZone" to="." method="_on_perspective_zone_body_exited"]

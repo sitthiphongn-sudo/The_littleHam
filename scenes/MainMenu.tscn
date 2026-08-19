@@ -1,0 +1,141 @@
+[gd_scene format=3 uid="uid://bcwyqpat0mk7g"]
+
+[ext_resource type="Script" uid="uid://bio6o6atw5u25" path="res://scripts/MainMenu.gd" id="1_menu"]
+[ext_resource type="VideoStream" uid="uid://dahawbr0qe7j8" path="res://assets/menu_VDO.ogv" id="2_2wh52"]
+[ext_resource type="FontFile" uid="uid://m62b448aeo58" path="res://assets/Back Nature.otf" id="3_2wh52"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_btn"]
+
+[sub_resource type="Theme" id="Theme_menu"]
+Button/styles/focus = SubResource("StyleBoxEmpty_btn")
+Button/styles/hover = SubResource("StyleBoxEmpty_btn")
+Button/styles/normal = SubResource("StyleBoxEmpty_btn")
+Button/styles/pressed = SubResource("StyleBoxEmpty_btn")
+
+[node name="MainMenu" type="Control" unique_id=1906343637]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_menu")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="." unique_id=1119984283]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.007
+anchor_top = -0.009000001
+anchor_right = -0.007
+anchor_bottom = -0.009000001
+offset_left = 7.8600006
+offset_top = -0.27999973
+offset_right = 2028.86
+offset_bottom = 1109.72
+stream = ExtResource("2_2wh52")
+autoplay = true
+expand = true
+loop = true
+
+[node name="Camera2D" type="Camera2D" parent="VideoStreamPlayer" unique_id=854316648]
+position = Vector2(1011, 554)
+
+[node name="VBoxRoot" type="VBoxContainer" parent="." unique_id=1678733919]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -205.0
+offset_top = -198.5
+offset_right = 205.0
+offset_bottom = 198.5
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="GameLabel" type="Label" parent="VBoxRoot" unique_id=1435891745]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("3_2wh52")
+theme_override_font_sizes/font_size = 33
+text = "THE"
+horizontal_alignment = 1
+
+[node name="MouseEscapeLabel" type="Label" parent="VBoxRoot" unique_id=1500013606]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_2wh52")
+theme_override_font_sizes/font_size = 80
+text = "LITTLE HAM"
+horizontal_alignment = 1
+
+[node name="RomanLabel" type="Label" parent="VBoxRoot" unique_id=977532924]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_2wh52")
+theme_override_font_sizes/font_size = 33
+text = "LABORATORY ESCAPE"
+horizontal_alignment = 1
+
+[node name="TitleSpacer" type="Control" parent="VBoxRoot" unique_id=1118895213]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="MenuBox" type="VBoxContainer" parent="VBoxRoot" unique_id=2068951053]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 6
+alignment = 1
+
+[node name="NewGameButton" type="Button" parent="VBoxRoot/MenuBox" unique_id=77946090]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = SubResource("Theme_menu")
+theme_override_fonts/font = ExtResource("3_2wh52")
+theme_override_font_sizes/font_size = 25
+text = "New Game"
+flat = true
+
+[node name="ControlsButton" type="Button" parent="VBoxRoot/MenuBox" unique_id=313692596]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = SubResource("Theme_menu")
+theme_override_fonts/font = ExtResource("3_2wh52")
+theme_override_font_sizes/font_size = 25
+text = "controls"
+flat = true
+
+[node name="SettingsButton" type="Button" parent="VBoxRoot/MenuBox" unique_id=1359278044]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = SubResource("Theme_menu")
+theme_override_fonts/font = ExtResource("3_2wh52")
+theme_override_font_sizes/font_size = 25
+text = "setting"
+flat = true
+
+[node name="CreditsButton" type="Button" parent="VBoxRoot/MenuBox" unique_id=2007625240]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = SubResource("Theme_menu")
+theme_override_fonts/font = ExtResource("3_2wh52")
+theme_override_font_sizes/font_size = 25
+text = "Credits"
+flat = true
+
+[node name="Vignette" type="ColorRect" parent="." unique_id=258354580]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -27.0
+offset_top = -13.0
+offset_right = -27.0
+offset_bottom = -13.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)

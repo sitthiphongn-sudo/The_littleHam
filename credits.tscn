@@ -1,0 +1,81 @@
+[gd_scene format=3 uid="uid://c02jed1wrde27"]
+
+[ext_resource type="Script" uid="uid://desogpmteel83" path="res://scenes/controls.gd" id="1_g4wvt"]
+[ext_resource type="FontFile" uid="uid://m62b448aeo58" path="res://assets/Back Nature.otf" id="2_pjc1l"]
+[ext_resource type="VideoStream" uid="uid://dpcp2raomlty5" path="res://assets/Main_VDO_1.ogv" id="3_g4wvt"]
+
+[node name="Credits" type="Control" unique_id=749088725]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_g4wvt")
+
+[node name="ExitButton" type="Button" parent="." unique_id=1564756268]
+layout_mode = 0
+offset_left = 1795.0
+offset_top = 994.0
+offset_right = 1803.0
+offset_bottom = 1002.0
+theme_override_fonts/font = ExtResource("2_pjc1l")
+theme_override_font_sizes/font_size = 43
+text = "Exit"
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="." unique_id=1626893077]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.007
+anchor_top = -0.009000001
+anchor_right = -0.007
+anchor_bottom = -0.009000001
+offset_left = 7.8600006
+offset_top = -0.27999973
+offset_right = 2028.86
+offset_bottom = 1109.72
+stream = ExtResource("3_g4wvt")
+autoplay = true
+expand = true
+loop = true
+
+[node name="Camera2D" type="Camera2D" parent="VideoStreamPlayer" unique_id=2116081447]
+position = Vector2(1011, 554)
+
+[node name="VBoxRoot" type="VBoxContainer" parent="." unique_id=951095761]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -205.0
+offset_top = -198.5
+offset_right = 205.0
+offset_bottom = 198.5
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="MouseEscapeLabel" type="Label" parent="VBoxRoot" unique_id=124254194]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_pjc1l")
+theme_override_font_sizes/font_size = 80
+text = "GAME DEVERLOPMENT
+"
+horizontal_alignment = 1
+
+[node name="MouseEscapeLabel2" type="Label" parent="VBoxRoot" unique_id=368342608]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_pjc1l")
+theme_override_font_sizes/font_size = 47
+text = "SITTIPONG NAKHONKWANG 
+PHURIN SRITAN
+KITTINUN KHAIPRAIWAN"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]

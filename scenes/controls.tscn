@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://bxhuw3ncfkaij"]
+
+[ext_resource type="Script" uid="uid://desogpmteel83" path="res://scenes/controls.gd" id="1_cywyo"]
+[ext_resource type="Texture2D" uid="uid://jvi7titqgtad" path="res://assets/Controls_IMG.PNG" id="1_i2gav"]
+[ext_resource type="FontFile" uid="uid://m62b448aeo58" path="res://assets/Back Nature.otf" id="3_ihl6s"]
+
+[node name="Controls" type="Control" unique_id=749088725]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cywyo")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=2120277564]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_i2gav")
+
+[node name="ExitButton" type="Button" parent="." unique_id=1564756268]
+layout_mode = 0
+offset_left = 1795.0
+offset_top = 994.0
+offset_right = 1803.0
+offset_bottom = 1002.0
+theme_override_fonts/font = ExtResource("3_ihl6s")
+theme_override_font_sizes/font_size = 43
+text = "Exit"
+
+[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]

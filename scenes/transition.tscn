@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://82w6f55gwl5d"]
+
+[ext_resource type="Script" uid="uid://dk2jn64oag0oh" path="res://transition.gd" id="1_rerct"]
+[ext_resource type="FontFile" uid="uid://dxvgfxbsmsqka" path="res://assets/DK Longreach.otf" id="2_f0i4t"]
+
+[node name="Transition" type="CanvasLayer" unique_id=1019959290]
+script = ExtResource("1_rerct")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=319095370]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="TitleLabel" type="Label" parent="." unique_id=1741322489]
+offset_left = 100.0
+offset_top = 386.0
+offset_right = 585.0
+offset_bottom = 743.0
+theme_override_colors/font_color = Color(1, 1, 1, 0.3529412)
+theme_override_fonts/font = ExtResource("2_f0i4t")
+theme_override_font_sizes/font_size = 150
+text = "HAMTER
+OUT"

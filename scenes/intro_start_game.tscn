@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://qky30mt4ryqy"]
+
+[ext_resource type="Script" uid="uid://di0jcgydvpub7" path="res://scenes/intro_start_game.gd" id="1_sul0y"]
+[ext_resource type="VideoStream" uid="uid://bfnite3d83b2k" path="res://assets/startgame.ogv" id="2_8av5e"]
+
+[node name="IntroStartGame" type="Control" unique_id=1107911289]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sul0y")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="." unique_id=1560103789]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("2_8av5e")
+autoplay = true
+expand = true

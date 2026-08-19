@@ -1,0 +1,201 @@
+[gd_scene format=3 uid="uid://csvqm72t55ip"]
+
+[ext_resource type="Script" uid="uid://b734165lp8seb" path="res://scenes/player.gd" id="1_qhqgy"]
+[ext_resource type="Texture2D" uid="uid://dagl71mqcif0a" path="res://assets/player_idle.png" id="3_dqkch"]
+[ext_resource type="Texture2D" uid="uid://cmbgat8yqmrm3" path="res://assets/shadow.png" id="3_qhqgy"]
+[ext_resource type="Script" uid="uid://ln8q1lv6mq3x" path="res://scenes/camera_2d.gd" id="4_dqkch"]
+[ext_resource type="Texture2D" uid="uid://11or0up82poq" path="res://assets/player_walk.png" id="4_qlg0r"]
+[ext_resource type="Texture2D" uid="uid://xir5xilsoeuy" path="res://assets/player_run.png" id="5_tuyoq"]
+[ext_resource type="AudioStream" uid="uid://dm6bkv5p3fv7q" path="res://assets/sounds_walk.wav" id="7_fjrip"]
+[ext_resource type="Texture2D" uid="uid://fv13q6lfwhr" path="res://assets/player_jump.png" id="7_smehm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dqkch"]
+radius = 23.359812
+
+[sub_resource type="Animation" id="Animation_qlg0r"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("P_idle:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("P_walk:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("P_run:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("P_jump:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_tuyoq"]
+resource_name = "idle"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("P_idle:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.083, 0.1667, 0.25, 0.33, 0.416, 0.5, 0.58, 0.66, 0.75, 0.83, 0.91, 1, 1.08, 1.16, 1.25, 1.33, 1.41, 1.5, 1.58, 1.67, 1.75, 1.83, 1.91, 2, 2.16, 2.25, 2.33, 2.41, 2.5, 2.58, 2.66, 2.75, 2.83, 2.916, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0), Vector2i(4, 0), Vector2i(5, 0), Vector2i(0, 1), Vector2i(1, 1), Vector2i(2, 1), Vector2i(3, 1), Vector2i(4, 1), Vector2i(5, 1), Vector2i(0, 2), Vector2i(1, 2), Vector2i(2, 2), Vector2i(3, 2), Vector2i(4, 2), Vector2i(5, 2), Vector2i(0, 3), Vector2i(1, 3), Vector2i(2, 3), Vector2i(3, 3), Vector2i(4, 3), Vector2i(5, 3), Vector2i(0, 4), Vector2i(1, 4), Vector2i(2, 4), Vector2i(3, 4), Vector2i(4, 4), Vector2i(5, 4), Vector2i(0, 5), Vector2i(1, 5), Vector2i(2, 5), Vector2i(3, 5), Vector2i(4, 5), Vector2i(5, 5)]
+}
+
+[sub_resource type="Animation" id="Animation_ur7pv"]
+resource_name = "jump"
+loop_mode = 1
+step = 0.027777778
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("P_jump:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.001, 0.027777778, 0.055555556, 0.083333336, 0.11111111, 0.1388889, 0.16666667, 0.19444445, 0.22222222, 0.25, 0.2777778, 0.30555555, 0.33333334, 0.3611111, 0.3888889, 0.41666666, 0.44444445, 0.47222224, 0.5, 0.5277778, 0.5555556, 0.5833333, 0.6111111, 0.6388889, 0.6666667, 0.6944445, 0.7222222, 0.75, 0.7777778, 0.8055556, 0.8333333, 0.8611111, 0.8888889, 0.9166667, 0.9444445, 0.9722222, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 35]
+}
+
+[sub_resource type="Animation" id="Animation_smehm"]
+resource_name = "run"
+loop_mode = 1
+step = 0.027777778
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("P_run:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.028, 0.055555556, 0.083333336, 0.11111111, 0.1388889, 0.16666667, 0.19444445, 0.22222222, 0.25, 0.2777778, 0.30555555, 0.33333334, 0.3611111, 0.3888889, 0.41666666, 0.44444445, 0.47222224, 0.5, 0.5277778, 0.5555556, 0.5833333, 0.6111111, 0.6388889, 0.6666667, 0.6944445, 0.7222222, 0.75, 0.7777778, 0.8055556, 0.8333333, 0.8611111, 0.8888889, 0.9166667, 0.9444445, 0.9722222, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 35]
+}
+
+[sub_resource type="Animation" id="Animation_fjrip"]
+resource_name = "walk"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("P_walk:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0833, 0.10000001, 0.25, 0.33, 0.4167, 0.5, 0.58, 0.66, 0.75, 0.83, 0.91, 1, 1.08, 1.16, 1.25, 1.33, 1.416, 1.5, 1.58, 1.66, 1.75, 1.83, 1.9167, 2, 2.0833, 2.16, 2.25, 2.33, 2.41, 2.5, 2.58, 2.66, 2.75, 2.83, 2.91, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 35]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fjrip"]
+_data = {
+&"RESET": SubResource("Animation_qlg0r"),
+&"idle": SubResource("Animation_tuyoq"),
+&"jump": SubResource("Animation_ur7pv"),
+&"run": SubResource("Animation_smehm"),
+&"walk": SubResource("Animation_fjrip")
+}
+
+[node name="Player" type="CharacterBody2D" unique_id=249151801]
+script = ExtResource("1_qhqgy")
+walk_footstep_sounds = Array[AudioStream]([ExtResource("7_fjrip")])
+
+[node name="ShadowSprite" type="Sprite2D" parent="." unique_id=1802185193]
+position = Vector2(-3.000002, 11.000004)
+scale = Vector2(0.019900879, -0.038131792)
+texture = ExtResource("3_qhqgy")
+
+[node name="P_idle" type="Sprite2D" parent="." unique_id=1238166941]
+visible = false
+scale = Vector2(0.08386316, 0.07814702)
+texture = ExtResource("3_dqkch")
+hframes = 6
+vframes = 6
+
+[node name="P_walk" type="Sprite2D" parent="." unique_id=1876535874]
+visible = false
+scale = Vector2(0.048737064, 0.04512557)
+texture = ExtResource("4_qlg0r")
+hframes = 6
+vframes = 6
+
+[node name="P_run" type="Sprite2D" parent="." unique_id=2062084153]
+visible = false
+position = Vector2(3, 4)
+scale = Vector2(0.0552946, 0.054073907)
+texture = ExtResource("5_tuyoq")
+hframes = 6
+vframes = 6
+
+[node name="P_jump" type="Sprite2D" parent="." unique_id=1750219934]
+scale = Vector2(0.07620587, 0.07099067)
+texture = ExtResource("7_smehm")
+hframes = 6
+vframes = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=616114263]
+position = Vector2(-4.000002, 3.0000002)
+scale = Vector2(-0.4380734, -0.51021916)
+shape = SubResource("CircleShape2D_dqkch")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=918325614]
+scale = Vector2(0.37548968, -0.6134474)
+zoom = Vector2(2.8, 2.8)
+limit_left = 0
+limit_top = 0
+limit_right = 3072
+limit_bottom = 390
+position_smoothing_enabled = true
+position_smoothing_speed = 6.0
+script = ExtResource("4_dqkch")
+sway_amount = 6.0
+sway_speed = 1.2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1932023482]
+libraries/ = SubResource("AnimationLibrary_fjrip")
+
+[node name="FootstepPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1268610059]
