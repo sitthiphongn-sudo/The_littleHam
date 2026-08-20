@@ -57,8 +57,8 @@ func _on_detect_body_exited(body: Node2D) -> void:
 # --- Web Hitbox (ผู้เล่นโดนยิง) ---
 func _on_web_hitbox_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player") and s_attack.visible:
-		if body.has_method("respawn"):
-			body.respawn()
+		if body.has_method("take_damage"):
+			body.take_damage(1)
 			_on_player_died()
 
 # เมื่อผู้เล่นตาย ให้รีเซ็ต Loop นับใหม่

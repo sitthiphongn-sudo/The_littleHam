@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://blgdvyxilreoa"]
+
+[ext_resource type="Script" uid="uid://dtprqj3o3qrli" path="res://scenes/death_screen.gd" id="1_dwo6e"]
+[ext_resource type="Shader" uid="uid://b2j8huqme1fci" path="res://scenes/death_screen.gdshader" id="2_7ns25"]
+[ext_resource type="FontFile" uid="uid://m62b448aeo58" path="res://assets/Back Nature.otf" id="2_mqh5l"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gwety"]
+shader = ExtResource("2_7ns25")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_btn"]
+
+[sub_resource type="Theme" id="Theme_7ns25"]
+Button/styles/focus = SubResource("StyleBoxEmpty_btn")
+Button/styles/hover = SubResource("StyleBoxEmpty_btn")
+Button/styles/normal = SubResource("StyleBoxEmpty_btn")
+Button/styles/pressed = SubResource("StyleBoxEmpty_btn")
+
+[node name="DeathScreen" type="CanvasLayer" unique_id=1831256986]
+script = ExtResource("1_dwo6e")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=607716328]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=134271770]
+material = SubResource("ShaderMaterial_gwety")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DeathLabel" type="Label" parent="." unique_id=1203515949]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -84.5
+offset_top = -47.5
+offset_right = 84.5
+offset_bottom = 47.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.8163972, 1.5883148e-06, 1.347661e-06, 1)
+theme_override_fonts/font = ExtResource("2_mqh5l")
+theme_override_font_sizes/font_size = 74
+text = "DEAD"
+vertical_alignment = 1
+
+[node name="ButtonBox" type="VBoxContainer" parent="." unique_id=476692845]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -110.0
+offset_top = -531.9999
+offset_right = -7.0
+offset_bottom = -381.99988
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(2.0695913, 1.6779199)
+size_flags_horizontal = 4
+theme_override_constants/separation = 6
+alignment = 1
+
+[node name="RestartButton" type="Button" parent="ButtonBox" unique_id=1059698777]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = SubResource("Theme_7ns25")
+theme_override_fonts/font = ExtResource("2_mqh5l")
+theme_override_font_sizes/font_size = 25
+text = "Restart"
+flat = true
+
+[node name="ExitButton" type="Button" parent="ButtonBox" unique_id=48214308]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = SubResource("Theme_7ns25")
+theme_override_fonts/font = ExtResource("2_mqh5l")
+theme_override_font_sizes/font_size = 25
+text = "Exit"
+flat = true

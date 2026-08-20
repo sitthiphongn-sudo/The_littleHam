@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 const WALK_SPEED = 40.0
-const RUN_SPEED = 100.0
+const RUN_SPEED = 200.0
 const GRAVITY = 980.0
 const JUMP_VELOCITY = -300.0
 
@@ -21,14 +21,20 @@ var in_perspective_mode := false
 var _perspective_jump_velocity := 0.0
 var _perspective_jump_offset := 0.0
 var _perspective_is_jumping := false
+var _is_dead := false  # สถานะตาย
 
 @onready var idle_sprite: Sprite2D = $P_idle
 @onready var walk_sprite: Sprite2D = $P_walk
 @onready var run_sprite: Sprite2D = $P_run
 @onready var jump_sprite: Sprite2D = $P_jump
+@onready var die_sprite: Sprite2D = $P_die
 @onready var shadow: Sprite2D = $ShadowSprite
 @onready var anim_player: AnimationPlayer = $AnimationPlayer
 @onready var footstep_player: AudioStreamPlayer2D = $FootstepPlayer
+@onready var death_player: AudioStreamPlayer2D = $DeathPlayer
+
+# อ้างอิง Filter ขาวดำ
+@export var grayscale_filter: ColorRect
 
 @export var walk_footstep_sounds: Array[AudioStream] = []
 @export var run_footstep_sounds: Array[AudioStream] = []
@@ -39,18 +45,37 @@ const RUN_STEP_INTERVAL := 0.22
 
 
 func _ready() -> void:
-	# เพิ่ม Player เข้าไปในกลุ่ม "player" เพื่อให้แมงมุมอ้างอิงได้ถูกต้อง
 	add_to_group("player")
+	# ค้นหา GrayscaleFilter อัตโนมัติหากไม่ได้ใส่ใน Inspector
+	if not grayscale_filter and has_node("../GrayscaleFilter"):
+		grayscale_filter = get_node("../GrayscaleFilter") as ColorRect
 
 
 # =========================================================
-# ระบบเกิดใหม่เมื่อโดนโจมตี
+# ระบบเกิดใหม่เมื่อกด Restart
 # =========================================================
 func respawn() -> void:
 	global_position = spawn_position
 	velocity = Vector2.ZERO
+	set_physics_process(true)   # เปิดระบบฟิสิกส์ให้กลับมาขยับได้
+	_is_dead = false            # รีเซ็ตสถานะตาย
 	
-	# รีเซ็ตสถานะการกระโดดของโหมด perspective กันสไปรท์ลอยค้าง
+	# ปิดเอฟเฟกต์ขาวดำ และซ่อนหน้าจอ DeathScreen
+	if grayscale_filter:
+		grayscale_filter.visible = false
+	if is_instance_valid(DeathScreen):
+		DeathScreen.visible = false
+
+	# รีเซ็ตสคริปต์กล้องกลับมาทำงานและแกว่งสั่นตามปกติ
+	var cam := $Camera2D if has_node("Camera2D") else get_viewport().get_camera_2d()
+	if cam:
+		if cam.has_method("reset_camera"):
+			cam.reset_camera()
+		else:
+			cam.zoom = Vector2(1.0, 1.0)
+			cam.rotation_degrees = 0.0
+	
+	# รีเซ็ตตำแหน่งสไปรท์และค่ากระโดด
 	_perspective_jump_offset = 0.0
 	_perspective_jump_velocity = 0.0
 	_perspective_is_jumping = false
@@ -58,6 +83,11 @@ func respawn() -> void:
 	walk_sprite.position.y = 0
 	run_sprite.position.y = 0
 	jump_sprite.position.y = 0
+	die_sprite.position.y = 0
+	
+	_play_state(idle_sprite)
+	if anim_player.has_animation("idle"):
+		anim_player.play("idle")
 
 
 func _physics_process(delta: float) -> void:
@@ -70,7 +100,7 @@ func _physics_process(delta: float) -> void:
 
 
 # =========================================================
-# โหมดปกติ (พื้นราบ ซ้าย-ขวา + กระโดดจริงด้วยแรงโน้มถ่วง)
+# โหมดปกติ (พื้นราบ ซ้าย-ขวา + กระโดดจริง)
 # =========================================================
 func _process_normal_movement(delta: float) -> void:
 	if not is_on_floor():
@@ -114,12 +144,11 @@ func _process_normal_movement(delta: float) -> void:
 
 
 # =========================================================
-# โหมด Perspective: เดินซ้าย-ขวา-ขึ้น-ลง (ลึก) + ย่อ/ขยายตามระยะ
-# + กระโดดจริง (แยกจากตำแหน่งความลึก ใช้ offset ลอยแค่สไปรท์)
+# โหมด Perspective: เดินซ้าย-ขวา-ขึ้น-ลง (ลึก)
 # =========================================================
 func _process_perspective_movement(delta: float) -> void:
 	var dir_x := Input.get_axis("move_left", "move_right")
-	var dir_y := Input.get_axis("move_up", "move_down")  # up = ลึกเข้าไป, down = ใกล้กล้อง
+	var dir_y := Input.get_axis("move_up", "move_down")
 	var is_running := Input.is_action_pressed("move_run")
 	var speed := RUN_SPEED if is_running else perspective_move_speed
 
@@ -129,16 +158,13 @@ func _process_perspective_movement(delta: float) -> void:
 	if dir_x != 0:
 		_set_flip(dir_x < 0)
 
-	# จำกัดไม่ให้เดินหลุดขอบเขตความลึก (บน-ล่าง)
 	global_position.y = clamp(global_position.y, perspective_top_y, perspective_bottom_y)
 
-	# คำนวณสัดส่วนความลึก 0 = ไกลสุด, 1 = ใกล้สุด แล้วปรับขนาดตัวละคร
 	var depth_ratio: float = inverse_lerp(perspective_top_y, perspective_bottom_y, global_position.y)
 	depth_ratio = clamp(depth_ratio, 0.0, 1.0)
 	var new_scale: float = lerp(perspective_min_scale, perspective_max_scale, depth_ratio)
 	scale = Vector2(new_scale, new_scale)
 
-	# --- กระโดดจริง (จำลองแนวดิ่งแยกจากตำแหน่งความลึก) ---
 	if Input.is_action_just_pressed("move_jump") and not _perspective_is_jumping:
 		_perspective_is_jumping = true
 		_perspective_jump_velocity = perspective_jump_force
@@ -151,7 +177,6 @@ func _process_perspective_movement(delta: float) -> void:
 			_perspective_jump_velocity = 0.0
 			_perspective_is_jumping = false
 
-	# ขยับแค่สไปรท์ตัวละครลอยขึ้น-ลงตามระยะกระโดด (เงายังอยู่กับพื้นเสมอ)
 	idle_sprite.position.y = _perspective_jump_offset
 	walk_sprite.position.y = _perspective_jump_offset
 	run_sprite.position.y = _perspective_jump_offset
@@ -188,6 +213,7 @@ func _set_flip(flip: bool) -> void:
 	walk_sprite.flip_h = flip
 	run_sprite.flip_h = flip
 	jump_sprite.flip_h = flip
+	die_sprite.flip_h = flip
 	shadow.flip_h = flip
 
 
@@ -196,6 +222,7 @@ func _play_state(active_sprite: Sprite2D) -> void:
 	walk_sprite.visible = active_sprite == walk_sprite
 	run_sprite.visible = active_sprite == run_sprite
 	jump_sprite.visible = active_sprite == jump_sprite
+	die_sprite.visible = active_sprite == die_sprite
 
 
 func _play_footsteps(delta: float, sounds: Array[AudioStream], interval: float) -> void:
@@ -209,7 +236,7 @@ func _play_footsteps(delta: float, sounds: Array[AudioStream], interval: float) 
 
 
 # =========================================================
-# เรียกอัตโนมัติจากสัญญาณของ PerspectiveZone (Area2D)
+# สัญญาณเข้า-ออกจากโหมด Perspective
 # =========================================================
 func _on_perspective_zone_body_entered(body: Node2D) -> void:
 	if body == self:
@@ -222,7 +249,6 @@ func _on_perspective_zone_body_exited(body: Node2D) -> void:
 		in_perspective_mode = false
 		scale = Vector2(perspective_max_scale, perspective_max_scale)
 		velocity = Vector2.ZERO
-		# รีเซ็ตค่ากระโดดกันสไปรท์ค้างลอย
 		_perspective_jump_offset = 0.0
 		_perspective_jump_velocity = 0.0
 		_perspective_is_jumping = false
@@ -230,6 +256,51 @@ func _on_perspective_zone_body_exited(body: Node2D) -> void:
 		walk_sprite.position.y = 0
 		run_sprite.position.y = 0
 		jump_sprite.position.y = 0
-		
+
+
+# =========================================================
+# ระบบรับความเสียหายและการตาย (ซูมเข้า + เอียงกล้อง + DeathScreen)
+# =========================================================
 func take_damage(_amount: int = 0) -> void:
-	respawn()
+	if _is_dead:
+		return  # ป้องกันโดนโจมตีซ้ำ
+	
+	_is_dead = true
+	velocity = Vector2.ZERO
+	set_physics_process(false)  # หยุดควบคุมตัวละคร
+	footstep_player.stop()
+
+	# เล่นเสียงตาย
+	if death_player:
+		death_player.play()
+
+	# 1. แสดงเอฟเฟกต์ภาพขาวดำ
+	if grayscale_filter:
+		grayscale_filter.visible = true
+
+	# 2. ปรับ Layer ของ DeathScreen ให้เป็น 105 แล้วเปิดทันที
+	if is_instance_valid(DeathScreen):
+		if "layer" in DeathScreen:
+			DeathScreen.layer = 105
+		DeathScreen.visible = true
+		if DeathScreen.has_method("show_death_screen"):
+			DeathScreen.show_death_screen()
+
+	# 3. เล่นแอนิเมชันตายแบบช้าลง
+	_play_state(die_sprite)
+	if anim_player.has_animation("P_die"):
+		anim_player.play("P_die", -1, 0.35)
+
+	# 4. เรียกสั่งสคริปต์กล้องให้ทำเอฟเฟกต์ซูม + เอียงภาพ
+	var cam = $Camera2D if has_node("Camera2D") else get_viewport().get_camera_2d()
+	if cam:
+		if cam.has_method("play_death_zoom"):
+			cam.play_death_zoom()
+		else:
+			# สำรองกรณีสคริปต์กล้องไม่มีฟังก์ชัน play_death_zoom
+			if "ignore_rotation" in cam:
+				cam.ignore_rotation = false
+			cam.make_current()
+			var tween := create_tween().set_parallel(true)
+			tween.tween_property(cam, "zoom", Vector2(2.8, 2.8), 1.2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+			tween.tween_property(cam, "rotation_degrees", 6.0, 1.2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)

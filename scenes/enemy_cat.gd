@@ -50,6 +50,11 @@ func _physics_process(delta: float) -> void:
 	if _attack_timer > 0.0:
 		_attack_timer -= delta
 
+	# เช็กเพิ่ม: ถ้าเป้าหมายตายแล้ว ให้ยกเลิกการไล่/โจมตีทันที
+	if target != null and is_instance_valid(target):
+		if "_is_dead" in target and target._is_dead:
+			reset_target_and_return()
+
 	match state:
 		State.IDLE:
 			velocity.x = 0
