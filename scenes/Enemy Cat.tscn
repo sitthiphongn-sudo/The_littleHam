@@ -1,54 +1,12 @@
 [gd_scene format=3 uid="uid://botcb8lmthhr1"]
 
+[ext_resource type="Script" uid="uid://cniacmy3yujqf" path="res://scenes/enemy_cat.gd" id="1_e3o4x"]
 [ext_resource type="Texture2D" uid="uid://bb142h11d1fcf" path="res://assets/Cat attak.png" id="2_icab4"]
+[ext_resource type="Texture2D" uid="uid://cmbgat8yqmrm3" path="res://assets/shadow.png" id="2_nk7jc"]
 [ext_resource type="Texture2D" uid="uid://dkcagac6s4ver" path="res://assets/Cat idle.png" id="3_npimb"]
 [ext_resource type="AudioStream" uid="uid://csijjt1k8bk2y" path="res://assets/Cat-walk-1-25588.mp3" id="4_2vrtj"]
 [ext_resource type="Texture2D" uid="uid://capo1temlceve" path="res://assets/Cat Run.png" id="4_b3050"]
 [ext_resource type="AudioStream" uid="uid://csdc0pyu12xv5" path="res://assets/Cat-hit3-566905.mp3" id="5_e3o4x"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8xp80"]
-atlas = ExtResource("2_icab4")
-region = Rect2(0, 0, 664, 544)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sp04v"]
-atlas = ExtResource("2_icab4")
-region = Rect2(664, 0, 664, 544)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ihbck"]
-atlas = ExtResource("2_icab4")
-region = Rect2(1328, 0, 664, 544)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vnsdt"]
-atlas = ExtResource("2_icab4")
-region = Rect2(1992, 0, 664, 544)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ikqpi"]
-atlas = ExtResource("2_icab4")
-region = Rect2(2656, 0, 664, 544)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5luka"]
-atlas = ExtResource("2_icab4")
-region = Rect2(3320, 0, 664, 544)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_yu8cv"]
-atlas = ExtResource("2_icab4")
-region = Rect2(0, 544, 664, 544)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ibnub"]
-atlas = ExtResource("2_icab4")
-region = Rect2(664, 544, 664, 544)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5wboo"]
-atlas = ExtResource("2_icab4")
-region = Rect2(1328, 544, 664, 544)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6de02"]
-atlas = ExtResource("2_icab4")
-region = Rect2(1992, 544, 664, 544)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cybgu"]
-atlas = ExtResource("2_icab4")
-region = Rect2(2656, 544, 664, 544)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wdxbp"]
 atlas = ExtResource("2_icab4")
@@ -442,39 +400,6 @@ region = Rect2(3060, 2380, 612, 476)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_8xp80")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sp04v")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ihbck")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vnsdt")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ikqpi")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5luka")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_yu8cv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ibnub")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5wboo")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6de02")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cybgu")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_wdxbp")
 }, {
 "duration": 1.0,
@@ -549,8 +474,8 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_34vfp")
 }],
-"loop": true,
-"name": &"Attak",
+"loop": false,
+"name": &"attack",
 "speed": 30.0
 }, {
 "frames": [{
@@ -663,7 +588,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_qrlfd")
 }],
 "loop": true,
-"name": &"Idle",
+"name": &"idle",
 "speed": 30.0
 }, {
 "frames": [{
@@ -776,38 +701,57 @@ animations = [{
 "texture": SubResource("AtlasTexture_kbb6c")
 }],
 "loop": true,
-"name": &"Run",
+"name": &"run",
 "speed": 30.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1vivr"]
-size = Vector2(103, 80.5)
+size = Vector2(103, 20.205269)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ipu61"]
-height = 78.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e3o4x"]
+size = Vector2(486.7322, 20)
 
-[node name="Enemy" type="RigidBody2D" unique_id=426305332]
+[sub_resource type="CircleShape2D" id="CircleShape2D_nk7jc"]
+
+[node name="Enemy" type="CharacterBody2D" unique_id=1210346619]
+scale = Vector2(-1.054, 1)
+script = ExtResource("1_e3o4x")
+
+[node name="ShadowSprite" type="Sprite2D" parent="." unique_id=392894728]
+position = Vector2(4.743833, -1.999999)
+scale = Vector2(0.05639064, -0.047973447)
+texture = ExtResource("2_nk7jc")
 
 [node name="Animation" type="AnimatedSprite2D" parent="." unique_id=150725276]
 texture_filter = 1
-position = Vector2(-80, -49)
-scale = Vector2(0.18421052, 0.18055555)
+position = Vector2(0.5119324, -39.888885)
+scale = Vector2(0.18421052, 0.17975704)
 sprite_frames = SubResource("SpriteFrames_v5gy4")
-animation = &"Attak"
-frame_progress = 0.72578114
+animation = &"attack"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1751040761]
-position = Vector2(-80.5, -42.75)
+position = Vector2(0.011932373, -7.1099243)
+scale = Vector2(0.77450603, 0.8799761)
 shape = SubResource("RectangleShape2D_1vivr")
 
 [node name="detection_area" type="Area2D" parent="." unique_id=1436813325]
+scale = Vector2(0.6089846, 0.6499356)
 
-[node name="Hit" type="CollisionShape2D" parent="detection_area" unique_id=1341531620]
-position = Vector2(-39, -42)
-shape = SubResource("CapsuleShape2D_ipu61")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detection_area" unique_id=1341531620]
+position = Vector2(1.5258789e-05, -47.69703)
+scale = Vector2(1.413249, 4.6668024)
+shape = SubResource("RectangleShape2D_e3o4x")
 
 [node name="Walksound" type="AudioStreamPlayer2D" parent="." unique_id=488672175]
 stream = ExtResource("4_2vrtj")
 
-[node name="Attak" type="AudioStreamPlayer2D" parent="." unique_id=1066991480]
+[node name="Attak_sound" type="AudioStreamPlayer2D" parent="." unique_id=1066991480]
 stream = ExtResource("5_e3o4x")
+
+[node name="Attack" type="Area2D" parent="." unique_id=1993496896]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack" unique_id=1043157880]
+position = Vector2(37.950676, -31.99999)
+rotation = 0.010335536
+scale = Vector2(1, 3.92)
+shape = SubResource("CircleShape2D_nk7jc")

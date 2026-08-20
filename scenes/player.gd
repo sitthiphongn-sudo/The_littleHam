@@ -230,3 +230,6 @@ func _on_perspective_zone_body_exited(body: Node2D) -> void:
 		walk_sprite.position.y = 0
 		run_sprite.position.y = 0
 		jump_sprite.position.y = 0
+		
+func take_damage(_amount: int = 0) -> void:
+	respawn()

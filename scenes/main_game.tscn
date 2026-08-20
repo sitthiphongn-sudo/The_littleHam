@@ -8,11 +8,13 @@
 [ext_resource type="Script" uid="uid://ctx31pf1l8qli" path="res://scenes/perspective_zone.gd" id="6_wi4c7"]
 [ext_resource type="Texture2D" uid="uid://dr14shwywn8o3" path="res://assets/black gradient.png" id="6_ygxny"]
 [ext_resource type="AudioStream" uid="uid://dvobq3nityude" path="res://assets/sound_maingame.wav" id="7_wi4c7"]
+[ext_resource type="PackedScene" uid="uid://botcb8lmthhr1" path="res://scenes/Enemy Cat.tscn" id="9_2l77h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0rdsr"]
 size = Vector2(1660, 21)
 
 [node name="MainGame" type="Node2D" unique_id=152549960]
+scale = Vector2(1, 0.97363055)
 script = ExtResource("1_0rdsr")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=799261376]
@@ -32,6 +34,11 @@ centered = false
 [node name="Player" parent="." unique_id=249151801 instance=ExtResource("3_d2op2")]
 position = Vector2(-145, -49)
 perspective_bottom_y = 351.0
+
+[node name="Enemy" parent="." unique_id=426305332 instance=ExtResource("9_2l77h")]
+position = Vector2(2147, 361.53342)
+rotation = 3.1415927
+scale = Vector2(0.81626195, -0.69955754)
 
 [node name="Spider" parent="." unique_id=1564601214 instance=ExtResource("5_70vka")]
 position = Vector2(1179.0001, 229.00002)
@@ -84,7 +91,7 @@ scale = Vector2(0.060106944, 1.1480076)
 texture = ExtResource("6_ygxny")
 centered = false
 
-[node name="PerspectiveZone" type="Area2D" parent="." unique_id=324594839]
+[node name="PerspectiveZone" type="Area2D" parent="." unique_id=2024167839]
 position = Vector2(46, 400)
 script = ExtResource("6_wi4c7")
 
@@ -96,5 +103,3 @@ stream = ExtResource("7_wi4c7")
 volume_db = -5.986
 pitch_scale = 0.84
 autoplay = true
-
-[connection signal="body_exited" from="PerspectiveZone" to="." method="_on_perspective_zone_body_exited"]
