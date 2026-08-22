@@ -63,4 +63,18 @@ func _on_restart_button_pressed() -> void:
 
 # กดปุ่ม Exit -> กลับหน้าเมนูหลัก
 func _on_exit_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://MainMenu.tscn")
+	# 1. ซ่อนหน้าจอ DeathScreen และรีเซ็ตค่า Modulate
+	visible = false
+	if death_label:
+		death_label.modulate.a = 0.0
+	if button_box:
+		button_box.modulate.a = 0.0
+		
+	# 2. ยกเลิก Tween ที่อาจจะยังทำงานค้างอยู่
+	var tween = create_tween()
+	if tween and tween.is_running():
+		tween.kill()
+
+	# 3. เปลี่ยนไปยังฉาก MainMenu
+	get_tree().change_scene_to_file("res://scenes/MainMenu.tscn")
+	

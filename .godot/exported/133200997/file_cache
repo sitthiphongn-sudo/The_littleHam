@@ -3,8 +3,8 @@ res://scenes/Enemy Cat.tscn::f52eeb650741a7856d8f75db6cad4d19::1787239872::res:/
 res://scenes/IntroVideo.tscn::55601f81d2c2c5016213335c394a406b::1786968545::res://.godot/exported/133200997/export-bd3414fd858c5a583525fe1723bf3034-IntroVideo.scn
 res://scenes/intro_start_game.tscn::7752642f27733873489ad4e69863f07b::1786968798::res://.godot/exported/133200997/export-ab3233290ccee0ff27c0be14bb141a2e-intro_start_game.scn
 res://scenes/MainMenu.tscn::cbf5eca34ad618ba75d9bf1d0c9e8554::1786970247::res://.godot/exported/133200997/export-23c8b2a48d59a0cd018bd8ad5ce7794c-MainMenu.scn
-res://scenes/main_game.tscn::ebaaf91babe56522d6e462c16bae9694::1787241773::res://.godot/exported/133200997/export-3a689a07f84009fde038ac878f1ae44a-main_game.scn
-res://scenes/player.tscn::41bdca3cbe1e16ce6575eeae31172171::1787241748::res://.godot/exported/133200997/export-234fb6894ec6226e856ab7f825500d3d-player.scn
+res://scenes/main_game.tscn::9957d19fecd43d8269c5cda19a021935::1787415877::res://.godot/exported/133200997/export-3a689a07f84009fde038ac878f1ae44a-main_game.scn
+res://scenes/player.tscn::53f449a95b93859152caaa1bd207acf1::1787414437::res://.godot/exported/133200997/export-234fb6894ec6226e856ab7f825500d3d-player.scn
 res://scenes/spider.tscn::74b8d0138b899d7a52612a95bfce5760::1787237685::res://.godot/exported/133200997/export-3c3f09d63a4baf18a4c0ae1a6fc29e61-spider.scn
 res://scenes/transition.tscn::05260aeb0c7146272d6811ae5a69874a::1786814873::res://.godot/exported/133200997/export-c5d0fcfa37b41758e77048240f661414-transition.scn
 res://credits.tscn::dc722d8bd2ab9c19f5356f5dc22b5357::1786605812::res://.godot/exported/133200997/export-88886d509479dcca8ec994bc2c1f3191-credits.scn

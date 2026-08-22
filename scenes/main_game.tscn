@@ -1,14 +1,22 @@
 [gd_scene format=3 uid="uid://xy7x6eeb2vm1"]
 
 [ext_resource type="Script" uid="uid://cccfe8yfg6rwj" path="res://scenes/main_game.gd" id="1_0rdsr"]
+[ext_resource type="VideoStream" uid="uid://ctmwuxg7p8rwi" path="res://assets/BG123.ogv" id="2_5cypo"]
+[ext_resource type="VideoStream" uid="uid://d3dbxgpdphjth" path="res://assets/So.ogv" id="2_o6v7o"]
 [ext_resource type="PackedScene" uid="uid://csvqm72t55ip" path="res://scenes/player.tscn" id="3_d2op2"]
-[ext_resource type="Texture2D" uid="uid://dpvlh08we47v1" path="res://assets/Try.png" id="3_ipu61"]
+[ext_resource type="Texture2D" uid="uid://d0r7nisj3sam6" path="res://assets/t.png" id="3_nqdth"]
 [ext_resource type="Texture2D" uid="uid://urug4jk0r10o" path="res://assets/map2.png" id="3_ygxny"]
 [ext_resource type="PackedScene" uid="uid://w0p3vybnbrq0" path="res://scenes/spider.tscn" id="5_70vka"]
 [ext_resource type="Script" uid="uid://ctx31pf1l8qli" path="res://scenes/perspective_zone.gd" id="6_wi4c7"]
 [ext_resource type="Texture2D" uid="uid://dr14shwywn8o3" path="res://assets/black gradient.png" id="6_ygxny"]
 [ext_resource type="AudioStream" uid="uid://dvobq3nityude" path="res://assets/sound_maingame.wav" id="7_wi4c7"]
 [ext_resource type="PackedScene" uid="uid://botcb8lmthhr1" path="res://scenes/Enemy Cat.tscn" id="9_2l77h"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_wjob3"]
+viewport_path = NodePath("VideoBgViewport1")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_5cypo"]
+viewport_path = NodePath("VideoBgViewport2")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0rdsr"]
 size = Vector2(1660, 21)
@@ -17,15 +25,58 @@ size = Vector2(1660, 21)
 scale = Vector2(1, 0.97363055)
 script = ExtResource("1_0rdsr")
 
+[node name="VideoBgViewport1" type="SubViewport" parent="." unique_id=2051936897]
+size = Vector2i(1280, 720)
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="VideoBgViewport1" unique_id=341497042]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("2_o6v7o")
+volume_db = -28.429996
+autoplay = true
+expand = true
+loop = true
+
+[node name="VideoBgViewport2" type="SubViewport" parent="." unique_id=646774490]
+size = Vector2i(1280, 720)
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="VideoBgViewport2" unique_id=127339332]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("2_5cypo")
+autoplay = true
+expand = true
+loop = true
+
+[node name="VideoBgSprite" type="Sprite2D" parent="." unique_id=2130625687]
+position = Vector2(31, -8)
+scale = Vector2(0.959, 0.6438964)
+texture = SubResource("ViewportTexture_wjob3")
+centered = false
+
+[node name="VideoBgSprite2" type="Sprite2D" parent="." unique_id=1762730396]
+position = Vector2(1280.0001, -15.406254)
+scale = Vector2(1.213, 0.633)
+texture = SubResource("ViewportTexture_5cypo")
+centered = false
+
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=799261376]
 
 [node name="Map1" type="Sprite2D" parent="." unique_id=1335916092]
+visible = false
 position = Vector2(31, -8)
-scale = Vector2(0.7751967, 0.666379)
-texture = ExtResource("3_ipu61")
+scale = Vector2(0.6712231, 0.5004491)
+texture = ExtResource("3_nqdth")
 centered = false
 
 [node name="Map2" type="Sprite2D" parent="." unique_id=1487862702]
+visible = false
 position = Vector2(1256, 1)
 scale = Vector2(0.9392356, 0.47298685)
 texture = ExtResource("3_ygxny")
@@ -46,7 +97,7 @@ rotation = 0.37974873
 scale = Vector2(0.47713456, 0.41312802)
 
 [node name="PlayerSpawn" type="Marker2D" parent="." unique_id=1707637133]
-position = Vector2(477, 355)
+position = Vector2(368, 359.47925)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1837830155]
 
@@ -96,7 +147,7 @@ position = Vector2(46, 400)
 script = ExtResource("6_wi4c7")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PerspectiveZone" unique_id=1069447504]
-polygon = PackedVector2Array(439, -105, -27, -13, 2778, -13, 2281, -92, 1858, -93, 1402, -74, 911, -42, 847, -98)
+polygon = PackedVector2Array(402, -88.79367, -27, -13, 2778, -13, 2281, -92, 1858, -93, 1398, -57.98114, 1009, -75.44156, 840, -90.84784)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1168219706]
 stream = ExtResource("7_wi4c7")
