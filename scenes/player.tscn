@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://dm6bkv5p3fv7q" path="res://assets/sounds_walk.wav" id="7_fjrip"]
 [ext_resource type="Texture2D" uid="uid://fv13q6lfwhr" path="res://assets/player_jump.png" id="7_smehm"]
 [ext_resource type="Texture2D" uid="uid://blm554pbn1pkk" path="res://assets/player_die.png" id="8_ur7pv"]
+[ext_resource type="Texture2D" uid="uid://c1ur4smdhpoh" path="res://assets/recover-recover.png" id="10_3v2ag"]
 [ext_resource type="AudioStream" uid="uid://bcjklvujkhym2" path="res://assets/runn.wav" id="10_d2wvv"]
 [ext_resource type="AudioStream" uid="uid://da8rs1j5cuuk4" path="res://assets/test_s.wav" id="10_y4r1p"]
 
@@ -93,6 +94,18 @@ tracks/4/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("recover:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_tuyoq"]
 resource_name = "idle"
@@ -126,6 +139,22 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 35]
+}
+
+[sub_resource type="Animation" id="Animation_jej6c"]
+resource_name = "recover"
+step = 0.04
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("recover:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.04, 0.08, 0.12, 0.16, 0.19999999, 0.24, 0.28, 0.32, 0.35999998, 0.39999998, 0.44, 0.48, 0.52, 0.56, 0.59999996, 0.64, 0.68, 0.71999997, 0.76, 0.79999995, 0.84, 0.88, 0.91999996, 0.96, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 24]
 }
 
 [sub_resource type="Animation" id="Animation_smehm"]
@@ -168,6 +197,7 @@ _data = {
 &"RESET": SubResource("Animation_qlg0r"),
 &"idle": SubResource("Animation_tuyoq"),
 &"jump": SubResource("Animation_ur7pv"),
+&"recover": SubResource("Animation_jej6c"),
 &"run": SubResource("Animation_smehm"),
 &"walk": SubResource("Animation_fjrip")
 }
@@ -183,6 +213,7 @@ scale = Vector2(0.019900879, -0.038131792)
 texture = ExtResource("3_qhqgy")
 
 [node name="P_idle" type="Sprite2D" parent="." unique_id=1238166941]
+visible = false
 scale = Vector2(0.08386316, 0.07814702)
 texture = ExtResource("3_dqkch")
 hframes = 6
@@ -217,6 +248,13 @@ texture = ExtResource("8_ur7pv")
 hframes = 5
 vframes = 5
 
+[node name="recover" type="Sprite2D" parent="." unique_id=101556635]
+position = Vector2(-1, -7.0000005)
+scale = Vector2(0.15941346, 0.14235781)
+texture = ExtResource("10_3v2ag")
+hframes = 5
+vframes = 5
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=616114263]
 position = Vector2(-4.000002, 3.0000002)
 scale = Vector2(-0.4380734, -0.51021916)
@@ -227,7 +265,7 @@ scale = Vector2(0.37548968, -0.6134474)
 zoom = Vector2(2.8, 2.8)
 limit_left = 0
 limit_top = 0
-limit_right = 3072
+limit_right = 6500
 limit_bottom = 390
 position_smoothing_enabled = true
 position_smoothing_speed = 6.0

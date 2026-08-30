@@ -1,16 +1,24 @@
 [gd_scene format=3 uid="uid://xy7x6eeb2vm1"]
 
 [ext_resource type="Script" uid="uid://cccfe8yfg6rwj" path="res://scenes/main_game.gd" id="1_0rdsr"]
-[ext_resource type="VideoStream" uid="uid://ctmwuxg7p8rwi" path="res://assets/BG123.ogv" id="2_5cypo"]
+[ext_resource type="VideoStream" uid="uid://tr48y11ybbxk" path="res://assets/22.ogv" id="2_ihbck"]
 [ext_resource type="VideoStream" uid="uid://d3dbxgpdphjth" path="res://assets/So.ogv" id="2_o6v7o"]
+[ext_resource type="VideoStream" uid="uid://dnbkk0j67qm7n" path="res://assets/map3.ogv" id="2_wjob3"]
+[ext_resource type="VideoStream" uid="uid://cm5jyt3dd1igh" path="res://assets/6_new.ogv" id="3_5luka"]
 [ext_resource type="PackedScene" uid="uid://csvqm72t55ip" path="res://scenes/player.tscn" id="3_d2op2"]
 [ext_resource type="Texture2D" uid="uid://d0r7nisj3sam6" path="res://assets/t.png" id="3_nqdth"]
 [ext_resource type="Texture2D" uid="uid://urug4jk0r10o" path="res://assets/map2.png" id="3_ygxny"]
+[ext_resource type="VideoStream" uid="uid://duimaitffeyq0" path="res://assets/2.ogv" id="4_sp04v"]
+[ext_resource type="Texture2D" uid="uid://cuwxsrr4f3mbh" path="res://assets/map2 (1).png" id="5_5cypo"]
+[ext_resource type="VideoStream" uid="uid://cof4er06iq8gm" path="res://assets/map4.ogv" id="5_8xp80"]
 [ext_resource type="PackedScene" uid="uid://w0p3vybnbrq0" path="res://scenes/spider.tscn" id="5_70vka"]
 [ext_resource type="Script" uid="uid://ctx31pf1l8qli" path="res://scenes/perspective_zone.gd" id="6_wi4c7"]
 [ext_resource type="Texture2D" uid="uid://dr14shwywn8o3" path="res://assets/black gradient.png" id="6_ygxny"]
 [ext_resource type="AudioStream" uid="uid://dvobq3nityude" path="res://assets/sound_maingame.wav" id="7_wi4c7"]
 [ext_resource type="PackedScene" uid="uid://botcb8lmthhr1" path="res://scenes/Enemy Cat.tscn" id="9_2l77h"]
+[ext_resource type="Texture2D" uid="uid://dvxc65t2c535f" path="res://assets/map44.png" id="9_sp04v"]
+[ext_resource type="Texture2D" uid="uid://bv0ao0jtsifjk" path="res://assets/2.png" id="12_yu8cv"]
+[ext_resource type="Texture2D" uid="uid://d3j7jpy757jxa" path="res://assets/33p.png" id="13_ibnub"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_wjob3"]
 viewport_path = NodePath("VideoBgViewport1")
@@ -18,12 +26,69 @@ viewport_path = NodePath("VideoBgViewport1")
 [sub_resource type="ViewportTexture" id="ViewportTexture_5cypo"]
 viewport_path = NodePath("VideoBgViewport2")
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_8xp80"]
+viewport_path = NodePath("VideoBgViewport3")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_sp04v"]
+viewport_path = NodePath("VideoBgViewport4")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_vnsdt"]
+viewport_path = NodePath("VideoBgViewport5")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_5wboo"]
+viewport_path = NodePath("VideoBgViewport6")
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0rdsr"]
 size = Vector2(1660, 21)
 
 [node name="MainGame" type="Node2D" unique_id=152549960]
 scale = Vector2(1, 0.97363055)
 script = ExtResource("1_0rdsr")
+
+[node name="VideoBgViewport5" type="SubViewport" parent="." unique_id=121215994]
+size = Vector2i(1280, 720)
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="VideoBgViewport5" unique_id=1867458394]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("2_ihbck")
+volume_db = -80.0
+autoplay = true
+expand = true
+loop = true
+
+[node name="VideoBgViewport6" type="SubViewport" parent="." unique_id=2018316603]
+size = Vector2i(1280, 720)
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="VideoBgViewport6" unique_id=2037507874]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("3_5luka")
+volume_db = -80.0
+autoplay = true
+expand = true
+loop = true
+
+[node name="VideoBgViewport3" type="SubViewport" parent="." unique_id=922462171]
+size = Vector2i(1280, 720)
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="VideoBgViewport3" unique_id=1387261470]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("2_wjob3")
+volume_db = -80.0
+autoplay = true
+expand = true
+loop = true
 
 [node name="VideoBgViewport1" type="SubViewport" parent="." unique_id=2051936897]
 size = Vector2i(1280, 720)
@@ -35,7 +100,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 stream = ExtResource("2_o6v7o")
-volume_db = -28.429996
+volume_db = -28.429993
 autoplay = true
 expand = true
 loop = true
@@ -49,7 +114,23 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-stream = ExtResource("2_5cypo")
+stream = ExtResource("4_sp04v")
+volume_db = -80.0
+autoplay = true
+expand = true
+loop = true
+
+[node name="VideoBgViewport4" type="SubViewport" parent="." unique_id=1604901786]
+size = Vector2i(1280, 720)
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="VideoBgViewport4" unique_id=2075121733]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("5_8xp80")
+volume_db = -80.0
 autoplay = true
 expand = true
 loop = true
@@ -62,8 +143,32 @@ centered = false
 
 [node name="VideoBgSprite2" type="Sprite2D" parent="." unique_id=1762730396]
 position = Vector2(1280.0001, -15.406254)
-scale = Vector2(1.213, 0.633)
+scale = Vector2(0.9351562, 0.633)
 texture = SubResource("ViewportTexture_5cypo")
+centered = false
+
+[node name="VideoBgSprite3" type="Sprite2D" parent="." unique_id=13251393]
+position = Vector2(2448.0002, -13.352087)
+scale = Vector2(0.9351562, 0.633)
+texture = SubResource("ViewportTexture_8xp80")
+centered = false
+
+[node name="VideoBgSprite4" type="Sprite2D" parent="." unique_id=1015104605]
+position = Vector2(3635, 1.0270841)
+scale = Vector2(0.9351562, 0.633)
+texture = SubResource("ViewportTexture_sp04v")
+centered = false
+
+[node name="VideoBgSprite5" type="Sprite2D" parent="." unique_id=639668867]
+position = Vector2(4843, 1.0270767)
+scale = Vector2(0.9351562, 0.633)
+texture = SubResource("ViewportTexture_vnsdt")
+centered = false
+
+[node name="VideoBgSprite6" type="Sprite2D" parent="." unique_id=1984073305]
+position = Vector2(4843, 1.0270767)
+scale = Vector2(0.9351562, 0.633)
+texture = SubResource("ViewportTexture_5wboo")
 centered = false
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=799261376]
@@ -77,9 +182,37 @@ centered = false
 
 [node name="Map2" type="Sprite2D" parent="." unique_id=1487862702]
 visible = false
-position = Vector2(1256, 1)
-scale = Vector2(0.9392356, 0.47298685)
+position = Vector2(1261.0001, -20.541674)
+scale = Vector2(0.935, 0.605)
+texture = ExtResource("5_5cypo")
+centered = false
+
+[node name="Map3" type="Sprite2D" parent="." unique_id=622931654]
+visible = false
+position = Vector2(2514, -10.270836)
+scale = Vector2(0.730539, 0.49662384)
 texture = ExtResource("3_ygxny")
+centered = false
+
+[node name="Map4" type="Sprite2D" parent="." unique_id=491201663]
+visible = false
+position = Vector2(3635.9998, -5.135418)
+scale = Vector2(0.730539, 0.49662384)
+texture = ExtResource("9_sp04v")
+centered = false
+
+[node name="Map5" type="Sprite2D" parent="." unique_id=1719574618]
+visible = false
+position = Vector2(4859, -13.352086)
+scale = Vector2(0.730539, 0.49662384)
+texture = ExtResource("12_yu8cv")
+centered = false
+
+[node name="Map6" type="Sprite2D" parent="." unique_id=796911701]
+visible = false
+position = Vector2(6068, -11.29792)
+scale = Vector2(0.730539, 0.49662384)
+texture = ExtResource("13_ibnub")
 centered = false
 
 [node name="Player" parent="." unique_id=249151801 instance=ExtResource("3_d2op2")]
@@ -121,8 +254,21 @@ scale = Vector2(0.13240741, 0.18049271)
 texture = ExtResource("6_ygxny")
 centered = false
 
+[node name="Black Gra3_Cen_R2" type="Sprite2D" parent="StaticBody2D" unique_id=120406834]
+position = Vector2(2478, -4.1083345)
+scale = Vector2(0.13240741, 0.18049271)
+texture = ExtResource("6_ygxny")
+centered = false
+
 [node name="Black Gra4_Cen_L" type="Sprite2D" parent="StaticBody2D" unique_id=1167202769]
 position = Vector2(1262, 449)
+rotation = 3.1465828
+scale = Vector2(0.18206072, 0.1801938)
+texture = ExtResource("6_ygxny")
+centered = false
+
+[node name="Black Gra4_Cen_L2" type="Sprite2D" parent="StaticBody2D" unique_id=534988873]
+position = Vector2(2493, 448.8355)
 rotation = 3.1465828
 scale = Vector2(0.18206072, 0.1801938)
 texture = ExtResource("6_ygxny")
@@ -131,14 +277,53 @@ centered = false
 [node name="Black Gra2" type="Sprite2D" parent="StaticBody2D" unique_id=1384203829]
 position = Vector2(-33.99997, 459.00003)
 rotation = -1.5711815
-scale = Vector2(0.060106944, 1.1480076)
+scale = Vector2(0.060106944, 2.9313858)
 texture = ExtResource("6_ygxny")
 centered = false
 
 [node name="Black Gra3" type="Sprite2D" parent="StaticBody2D" unique_id=1506466864]
-position = Vector2(2829.0002, -13.999999)
+position = Vector2(7300.338, -13.823088)
 rotation = -4.7123494
-scale = Vector2(0.060106944, 1.1480076)
+scale = Vector2(0.060106944, 2.9365425)
+texture = ExtResource("6_ygxny")
+centered = false
+
+[node name="Black Gra4_Cen_L3" type="Sprite2D" parent="StaticBody2D" unique_id=2113983843]
+position = Vector2(3630, 443.70013)
+rotation = 3.1465828
+scale = Vector2(0.18206072, 0.1801938)
+texture = ExtResource("6_ygxny")
+centered = false
+
+[node name="Black Gra4_Cen_L4" type="Sprite2D" parent="StaticBody2D" unique_id=182409418]
+position = Vector2(4866, 452.94385)
+rotation = 3.1465828
+scale = Vector2(0.18206072, 0.1801938)
+texture = ExtResource("6_ygxny")
+centered = false
+
+[node name="Black Gra4_Cen_L5" type="Sprite2D" parent="StaticBody2D" unique_id=487196650]
+position = Vector2(6062.9995, 443.7001)
+rotation = 3.1465828
+scale = Vector2(0.18206072, 0.1801938)
+texture = ExtResource("6_ygxny")
+centered = false
+
+[node name="Black Gra3_Cen_R3" type="Sprite2D" parent="StaticBody2D" unique_id=1076306451]
+position = Vector2(3612, -6.162502)
+scale = Vector2(0.13240741, 0.18049271)
+texture = ExtResource("6_ygxny")
+centered = false
+
+[node name="Black Gra3_Cen_R4" type="Sprite2D" parent="StaticBody2D" unique_id=1356332177]
+position = Vector2(4864, 3.0812507)
+scale = Vector2(0.13240741, 0.18049271)
+texture = ExtResource("6_ygxny")
+centered = false
+
+[node name="Black Gra3_Cen_R5" type="Sprite2D" parent="StaticBody2D" unique_id=1019050089]
+position = Vector2(6052, -9.243753)
+scale = Vector2(0.13240741, 0.18049271)
 texture = ExtResource("6_ygxny")
 centered = false
 
@@ -147,7 +332,7 @@ position = Vector2(46, 400)
 script = ExtResource("6_wi4c7")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PerspectiveZone" unique_id=1069447504]
-polygon = PackedVector2Array(402, -88.79367, -27, -13, 2778, -13, 2281, -92, 1858, -93, 1398, -57.98114, 1009, -75.44156, 840, -90.84784)
+polygon = PackedVector2Array(402, -88.79367, -27, -13, 7234, 52.94388, 7226, -12.789459, 6946, -21.006134, 6876, -87.76657, 6370, -91.87491, 6323.853, -16.57428, 5970, -43.60199, 4931, -57.98114, 4783, -26.141571, 4576, -46.683228, 4512.38, -19.743164, 4340, -49.764465, 3827, -53.872803, 3594, -22.033234, 3324, -80.576996, 2956, -90.84784, 2506, -45.65616, 2220, -114.470764, 1772, -113.443665, 1398, -57.98114, 1009, -75.44156, 840, -90.84784)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1168219706]
 stream = ExtResource("7_wi4c7")

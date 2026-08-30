@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 const WALK_SPEED = 40.0
-const RUN_SPEED = 150.0
+const RUN_SPEED = 400.0
 const GRAVITY = 980.0
 const JUMP_VELOCITY = -300.0
 
@@ -17,17 +17,22 @@ const JUMP_VELOCITY = -300.0
 @export var perspective_jump_force: float = -300.0
 @export var perspective_jump_gravity: float = 980.0
 
+# --- ตั้งค่าค้างเฟรมแรกของ recover ก่อนเริ่มเล่นตอนเข้าเกม ---
+@export var recover_hold_duration: float = 3.0  # วินาทีที่ค้างนิ่งที่เฟรมแรกก่อนเล่น recover
+
 var in_perspective_mode := false
 var _perspective_jump_velocity := 0.0
 var _perspective_jump_offset := 0.0
 var _perspective_is_jumping := false
 var _is_dead := false  # สถานะตาย
+var _is_recovering := false  # true ตลอดช่วงที่กำลังเล่น/ค้าง recover -> กันไม่ให้ _physics_process ทับ
 
 @onready var idle_sprite: Sprite2D = $P_idle
 @onready var walk_sprite: Sprite2D = $P_walk
 @onready var run_sprite: Sprite2D = $P_run
 @onready var jump_sprite: Sprite2D = $P_jump
 @onready var die_sprite: Sprite2D = $P_die
+@onready var recover_sprite: Sprite2D = $recover
 @onready var shadow: Sprite2D = $ShadowSprite
 @onready var anim_player: AnimationPlayer = $AnimationPlayer
 @onready var footstep_player: AudioStreamPlayer2D = $FootstepPlayer
@@ -49,6 +54,28 @@ func _ready() -> void:
 	# ค้นหา GrayscaleFilter อัตโนมัติหากไม่ได้ใส่ใน Inspector
 	if not grayscale_filter and has_node("../GrayscaleFilter"):
 		grayscale_filter = get_node("../GrayscaleFilter") as ColorRect
+
+	_hold_recover_frame_then_play()
+
+
+# ตอนเข้าเกม: โชว์เฟรมแรกของ recover นิ่ง ๆ ตาม recover_hold_duration วินาที แล้วค่อยเล่น animation
+func _hold_recover_frame_then_play() -> void:
+	if not anim_player.has_animation("recover"):
+		return
+
+	_is_recovering = true
+	_play_state(recover_sprite)
+	anim_player.stop()
+	anim_player.play("recover")
+	anim_player.seek(0.0, true)   # ไปที่เฟรมแรกและอัปเดตภาพทันที
+	anim_player.pause()           # ค้างนิ่งไว้ที่เฟรมแรก
+
+	await get_tree().create_timer(recover_hold_duration).timeout
+
+	anim_player.play("recover")   # เริ่มเล่น animation จริงจากเฟรมแรก
+	await anim_player.animation_finished  # รอจนเล่นจบ
+
+	_is_recovering = false        # ปล่อยให้ระบบเดิน/idle ทำงานต่อได้ตามปกติ
 
 
 # =========================================================
@@ -85,12 +112,23 @@ func respawn() -> void:
 	jump_sprite.position.y = 0
 	die_sprite.position.y = 0
 	
-	_play_state(idle_sprite)
-	if anim_player.has_animation("idle"):
+	# ตอน Restart ให้เล่น recover ทันที ไม่มีการหน่วงเวลา
+	if anim_player.has_animation("recover"):
+		_is_recovering = true
+		_play_state(recover_sprite)
+		anim_player.stop()
+		anim_player.play("recover")
+		await anim_player.animation_finished
+		_is_recovering = false
+	elif anim_player.has_animation("idle"):
+		_play_state(idle_sprite)
 		anim_player.play("idle")
 
 
 func _physics_process(delta: float) -> void:
+	if _is_recovering:
+		return  # กำลังค้าง/เล่น recover อยู่ -> ห้ามระบบเดิน/idle มาทับ animation
+
 	if in_perspective_mode:
 		_process_perspective_movement(delta)
 	else:
@@ -214,6 +252,7 @@ func _set_flip(flip: bool) -> void:
 	run_sprite.flip_h = flip
 	jump_sprite.flip_h = flip
 	die_sprite.flip_h = flip
+	recover_sprite.flip_h = flip
 	shadow.flip_h = flip
 
 
@@ -223,6 +262,7 @@ func _play_state(active_sprite: Sprite2D) -> void:
 	run_sprite.visible = active_sprite == run_sprite
 	jump_sprite.visible = active_sprite == jump_sprite
 	die_sprite.visible = active_sprite == die_sprite
+	recover_sprite.visible = active_sprite == recover_sprite
 
 
 func _play_footsteps(delta: float, sounds: Array[AudioStream], interval: float) -> void:
