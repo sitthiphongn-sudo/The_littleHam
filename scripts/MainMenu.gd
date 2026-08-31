@@ -53,7 +53,7 @@ func _on_button_pressed(button_name: String) -> void:
 		"ControlsButton":
 			Transition.change_scene("res://scenes/controls.tscn", 1.5)
 		"SettingsButton":
-			print("Settings pressed")
+			Transition.change_scene("res://scenes/SceneSetting.tscn", 1.5)
 		"CreditsButton":
 			print("Credits pressed")
 

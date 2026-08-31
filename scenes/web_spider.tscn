@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://byq8xx6vmcud"]
+
+[ext_resource type="Script" uid="uid://vhv1qam55k5q" path="res://scenes/web_spider.gd" id="1_7wuqk"]
+[ext_resource type="Texture2D" uid="uid://xbb12q0axlwo" path="res://assets/Asset_s.png" id="1_h1ptu"]
+
+[sub_resource type="Animation" id="Animation_7wuqk"]
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.90000004, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 9]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("web_spider/CollisionShape2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.23, 0.41, 0.59, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-14, -328), Vector2(-25, -123), Vector2(-19, 166), Vector2(-19, 282), Vector2(-5, 436), Vector2(-5, 436)]
+}
+
+[sub_resource type="Animation" id="Animation_042hc"]
+resource_name = "attack_s"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.90000004),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("web_spider/CollisionShape2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.34, 0.46, 0.56, 0.72, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-14, -328), Vector2(-20, -1), Vector2(-12, 167), Vector2(-13, 279), Vector2(-2, 432), Vector2(-2, 432)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qcxwv"]
+_data = {
+&"RESET": SubResource("Animation_7wuqk"),
+&"attack_s": SubResource("Animation_042hc")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ks0bo"]
+radius = 22.0
+height = 44.0
+
+[node name="Web_spider" type="CharacterBody2D" unique_id=2062916647]
+script = ExtResource("1_7wuqk")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=686701154]
+position = Vector2(-1, 28)
+texture = ExtResource("1_h1ptu")
+hframes = 10
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1039514211]
+libraries/ = SubResource("AnimationLibrary_qcxwv")
+
+[node name="web_spider" type="Area2D" parent="." unique_id=136999465]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="web_spider" unique_id=1302160801]
+position = Vector2(-14, -328)
+shape = SubResource("CapsuleShape2D_ks0bo")

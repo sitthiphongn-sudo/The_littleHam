@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://blm554pbn1pkk" path="res://assets/player_die.png" id="8_ur7pv"]
 [ext_resource type="Texture2D" uid="uid://c1ur4smdhpoh" path="res://assets/recover-recover.png" id="10_3v2ag"]
 [ext_resource type="AudioStream" uid="uid://bcjklvujkhym2" path="res://assets/runn.wav" id="10_d2wvv"]
-[ext_resource type="AudioStream" uid="uid://da8rs1j5cuuk4" path="res://assets/test_s.wav" id="10_y4r1p"]
+[ext_resource type="AudioStream" uid="uid://c0ln02mqso3rf" path="res://assets/sound_dead.wav" id="12_3v2ag"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dqkch"]
 radius = 23.359812
@@ -265,7 +265,7 @@ scale = Vector2(0.37548968, -0.6134474)
 zoom = Vector2(2.8, 2.8)
 limit_left = 0
 limit_top = 0
-limit_right = 6500
+limit_right = 7310
 limit_bottom = 390
 position_smoothing_enabled = true
 position_smoothing_speed = 6.0
@@ -279,4 +279,4 @@ libraries/ = SubResource("AnimationLibrary_fjrip")
 [node name="FootstepPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1268610059]
 
 [node name="DeathPlayer" type="AudioStreamPlayer2D" parent="." unique_id=397175302]
-stream = ExtResource("10_y4r1p")
+stream = ExtResource("12_3v2ag")

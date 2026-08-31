@@ -1,0 +1,10 @@
+res://scenes/player.tscn
+res://scenes/death_screen.gdshader
+res://scenes/main_game.tscn
+res://scenes/web_spider.tscn
+res://scenes/MainMenu.tscn
+res://scripts/MainMenu.gd
+res://scenes/SceneSetting.tscn
+res://scenes/EndTriggerZone.gd
+res://scenes/EndScene.gd
+res://scenes/EndScene.tscn
