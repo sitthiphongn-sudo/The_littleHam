@@ -22,6 +22,8 @@
 [ext_resource type="PackedScene" uid="uid://byq8xx6vmcud" path="res://scenes/web_spider.tscn" id="17_yu8cv"]
 [ext_resource type="PackedScene" uid="uid://c3yiqxwy2vqlr" path="res://scenes/PauseMenu.tscn" id="21_ibnub"]
 [ext_resource type="Script" uid="uid://cp5w0raev601s" path="res://scenes/EndTriggerZone.gd" id="22_5wboo"]
+[ext_resource type="Script" uid="uid://cu2kb006lcfr4" path="res://scenes/TutorialHintUI.gd" id="23_6de02"]
+[ext_resource type="FontFile" uid="uid://m62b448aeo58" path="res://assets/Back Nature.otf" id="24_hintfont"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_wjob3"]
 viewport_path = NodePath("VideoBgViewport1")
@@ -46,6 +48,17 @@ size = Vector2(1660, 21)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6de02"]
 size = Vector2(172, 478.4856)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hintbox"]
+content_margin_left = 24.0
+content_margin_top = 14.0
+content_margin_right = 24.0
+content_margin_bottom = 14.0
+bg_color = Color(0, 0, 0, 0.55)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
 
 [node name="MainGame" type="Node2D" unique_id=152549960]
 scale = Vector2(1, 0.97363055)
@@ -265,7 +278,7 @@ position = Vector2(2154, 377)
 shape = SubResource("RectangleShape2D_0rdsr")
 
 [node name="Black Gra_Left" type="Sprite2D" parent="StaticBody2D" unique_id=26555746]
-position = Vector2(-35.999996, 0)
+position = Vector2(-49, -10.270837)
 scale = Vector2(0.23911332, 0.19931951)
 texture = ExtResource("6_ygxny")
 centered = false
@@ -377,3 +390,22 @@ script = ExtResource("22_5wboo")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1505943432]
 position = Vector2(7276, 218.83653)
 shape = SubResource("RectangleShape2D_6de02")
+
+[node name="TutorialHintUI" type="CanvasLayer" parent="." unique_id=1633587083]
+script = ExtResource("23_6de02")
+
+[node name="HintBox" type="PanelContainer" parent="TutorialHintUI" unique_id=2134199082]
+offset_right = 700.0
+offset_bottom = 90.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_hintbox")
+
+[node name="HintLabel" type="Label" parent="TutorialHintUI/HintBox" unique_id=1369325512]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("24_hintfont")
+theme_override_font_sizes/font_size = 36
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3

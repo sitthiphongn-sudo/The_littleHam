@@ -5,6 +5,7 @@ extends Node2D
 
 func _ready() -> void:
 	player.global_position = spawn_point.global_position
+	TutorialManager.start_tutorial()
 
 
 func _on_perspective_zone_body_entered(body: Node2D) -> void:

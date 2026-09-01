@@ -1,14 +1,14 @@
+Label
+Control
+CanvasLayer
 CollisionShape2D
 Area2D
 Sprite2D
 VideoStreamPlayer
 SubViewport
-CanvasLayer
 AudioStreamPlayer2D
 ColorRect
 VBoxContainer
-Label
 CanvasModulate
 CharacterBody2D
 StaticBody2D
-AnimationPlayer

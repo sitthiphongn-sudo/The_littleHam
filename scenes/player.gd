@@ -146,6 +146,7 @@ func _process_normal_movement(delta: float) -> void:
 
 	if Input.is_action_just_pressed("move_jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
+		TutorialManager.report_action("jump")
 
 	var direction := Input.get_axis("move_left", "move_right")
 	var is_running := Input.is_action_pressed("move_run")
@@ -154,6 +155,9 @@ func _process_normal_movement(delta: float) -> void:
 		var speed := RUN_SPEED if is_running else WALK_SPEED
 		velocity.x = direction * speed
 		_set_flip(direction < 0)
+		TutorialManager.report_action("move", "left" if direction < 0 else "right")
+		if is_running:
+			TutorialManager.report_action("run")
 	else:
 		velocity.x = 0
 
@@ -195,6 +199,12 @@ func _process_perspective_movement(delta: float) -> void:
 
 	if dir_x != 0:
 		_set_flip(dir_x < 0)
+		TutorialManager.report_action("move", "left" if dir_x < 0 else "right")
+		if is_running:
+			TutorialManager.report_action("run")
+
+	if dir_y != 0:
+		TutorialManager.report_action("perspective", "up" if dir_y < 0 else "down")
 
 	global_position.y = clamp(global_position.y, perspective_top_y, perspective_bottom_y)
 
@@ -206,6 +216,7 @@ func _process_perspective_movement(delta: float) -> void:
 	if Input.is_action_just_pressed("move_jump") and not _perspective_is_jumping:
 		_perspective_is_jumping = true
 		_perspective_jump_velocity = perspective_jump_force
+		TutorialManager.report_action("jump")
 
 	if _perspective_is_jumping:
 		_perspective_jump_velocity += perspective_jump_gravity * delta
@@ -282,6 +293,7 @@ func _on_perspective_zone_body_entered(body: Node2D) -> void:
 	if body == self:
 		in_perspective_mode = true
 		velocity = Vector2.ZERO
+		TutorialManager.trigger("perspective")
 
 
 func _on_perspective_zone_body_exited(body: Node2D) -> void:
