@@ -19,7 +19,10 @@
 [ext_resource type="Texture2D" uid="uid://dvxc65t2c535f" path="res://assets/map44.png" id="9_sp04v"]
 [ext_resource type="Texture2D" uid="uid://bv0ao0jtsifjk" path="res://assets/2.png" id="12_yu8cv"]
 [ext_resource type="Texture2D" uid="uid://d3j7jpy757jxa" path="res://assets/33p.png" id="13_ibnub"]
+[ext_resource type="PackedScene" uid="uid://dy8kcgbs3qo1h" path="res://owl.tscn" id="16_wdxbp"]
 [ext_resource type="PackedScene" uid="uid://byq8xx6vmcud" path="res://scenes/web_spider.tscn" id="17_yu8cv"]
+[ext_resource type="PackedScene" uid="uid://dx302a5ygu1e0" path="res://jak.tscn" id="19_x3ega"]
+[ext_resource type="Texture2D" uid="uid://ccv3prlgut46s" path="res://assets/black.png" id="20_on6n6"]
 [ext_resource type="PackedScene" uid="uid://c3yiqxwy2vqlr" path="res://scenes/PauseMenu.tscn" id="21_ibnub"]
 [ext_resource type="Script" uid="uid://cp5w0raev601s" path="res://scenes/EndTriggerZone.gd" id="22_5wboo"]
 [ext_resource type="Script" uid="uid://cu2kb006lcfr4" path="res://scenes/TutorialHintUI.gd" id="23_6de02"]
@@ -88,7 +91,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-stream = ExtResource("3_5luka")
+stream = ExtResource("2_o6v7o")
 volume_db = -80.0
 autoplay = true
 expand = true
@@ -118,7 +121,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-stream = ExtResource("2_o6v7o")
+stream = ExtResource("3_5luka")
 volume_db = -28.429993
 autoplay = true
 expand = true
@@ -234,7 +237,7 @@ scale = Vector2(0.730539, 0.49662384)
 texture = ExtResource("13_ibnub")
 centered = false
 
-[node name="Player" parent="." unique_id=249151801 instance=ExtResource("3_d2op2")]
+[node name="Player" parent="." unique_id=249151801 groups=["player"] instance=ExtResource("3_d2op2")]
 position = Vector2(-145, -49)
 perspective_bottom_y = 351.0
 
@@ -242,6 +245,9 @@ perspective_bottom_y = 351.0
 position = Vector2(2147, 361.53342)
 rotation = 3.1415927
 scale = Vector2(0.81626195, -0.69955754)
+
+[node name="owl" parent="." unique_id=1104382561 instance=ExtResource("16_wdxbp")]
+position = Vector2(4302, 312.23343)
 
 [node name="Spider" parent="." unique_id=1564601214 instance=ExtResource("5_70vka")]
 position = Vector2(1179.0001, 229.00002)
@@ -263,6 +269,9 @@ scale = Vector2(0.43832818, 0.38915476)
 [node name="Web_spider4" parent="." unique_id=1782352682 instance=ExtResource("17_yu8cv")]
 position = Vector2(925, 171.52296)
 scale = Vector2(0.43832818, 0.38915476)
+
+[node name="jak" parent="." unique_id=101729057 instance=ExtResource("19_x3ega")]
+position = Vector2(3050, 353.31674)
 
 [node name="PlayerSpawn" type="Marker2D" parent="." unique_id=1707637133]
 position = Vector2(368, 359.47925)
@@ -369,12 +378,17 @@ scale = Vector2(0.13240741, 0.18049271)
 texture = ExtResource("6_ygxny")
 centered = false
 
+[node name="Black" type="Sprite2D" parent="StaticBody2D" unique_id=395011266]
+position = Vector2(7371.375, 215.90527)
+scale = Vector2(0.726536, 1.744277)
+texture = ExtResource("20_on6n6")
+
 [node name="PerspectiveZone" type="Area2D" parent="." unique_id=2024167839]
 position = Vector2(46, 400)
 script = ExtResource("6_wi4c7")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PerspectiveZone" unique_id=1069447504]
-polygon = PackedVector2Array(402, -88.79367, -27, -13, 7531, 53.970978, 7335, -62.089478, 7107.551, -16.26538, 6946, -21.006134, 6876, -87.76657, 6370, -91.87491, 6323.853, -16.57428, 5970, -43.60199, 4931, -57.98114, 4783, -26.141571, 4576, -46.683228, 4512.38, -19.743164, 4340, -49.764465, 3827, -53.872803, 3594, -22.033234, 3324, -80.576996, 2956, -90.84784, 2506, -45.65616, 2220, -114.470764, 1772, -113.443665, 1398, -57.98114, 1009, -75.44156, 840, -90.84784)
+polygon = PackedVector2Array(402, -88.79367, -27, -13, 521, 56.025146, 2876, 56.025146, 3424, 57.052216, 6266, 58.079315, 7055, 67.32306, 7531, 53.970978, 7335, -62.089478, 7140, -39.493652, 6946, -30.249878, 6876, -87.76657, 6370, -91.87491, 6328, -29.222809, 5970, -43.60199, 4931, -57.98114, 4783, -26.141571, 4576, -46.683228, 4512.38, -19.743164, 4340, -49.764465, 3827, -53.872803, 3594, -22.033234, 3324, -80.576996, 2956, -90.84784, 2506, -45.65616, 2220, -114.470764, 1772, -113.443665, 1398, -57.98114, 1009, -75.44156, 840, -90.84784)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1168219706]
 stream = ExtResource("7_wi4c7")

@@ -203,6 +203,7 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D" unique_id=249151801]
+collision_mask = 5
 script = ExtResource("1_qhqgy")
 walk_footstep_sounds = Array[AudioStream]([ExtResource("7_fjrip")])
 run_footstep_sounds = Array[AudioStream]([ExtResource("10_d2wvv")])

@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://ds6ly73u6ln2g"]
+
+[ext_resource type="Texture2D" uid="uid://d1wrmkjadk286" path="res://assets/ท่อน้ำ1.png" id="1_ssruu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xb4t0"]
+size = Vector2(1960.799, 244.93622)
+
+[node name="ท่อน้ำ1" type="Node2D" unique_id=902260136]
+
+[node name="1" type="Sprite2D" parent="." unique_id=200236647]
+position = Vector2(-3, 4)
+scale = Vector2(0.70073664, 0.7361878)
+texture = ExtResource("1_ssruu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="1" unique_id=151214868]
+position = Vector2(11.413944, 37.81708)
+shape = SubResource("RectangleShape2D_xb4t0")

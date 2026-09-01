@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://dx302a5ygu1e0"]
+
+[ext_resource type="Script" uid="uid://cil2y58uph5oj" path="res://scenes/jak.gd" id="1_345h1"]
+[ext_resource type="Texture2D" uid="uid://bbbr7oaafnhr0" path="res://assets/790112569_1432352605682593_8406930243780709705_n.png" id="2_qbi8c"]
+[ext_resource type="AudioStream" uid="uid://4y4aj4xiwiec" path="res://assets/sound_jak.wav" id="3_ic1ki"]
+
+[sub_resource type="Animation" id="Animation_cer41"]
+step = 0.1
+
+[sub_resource type="Animation" id="Animation_0i3c5"]
+resource_name = "swing"
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.90000004, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 9]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i0qe0"]
+_data = {
+&"RESET": SubResource("Animation_cer41"),
+&"swing": SubResource("Animation_0i3c5")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ks0bo"]
+radius = 22.0
+height = 51.658997
+
+[node name="jak" type="CharacterBody2D" unique_id=2062916647]
+script = ExtResource("1_345h1")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=686701154]
+position = Vector2(-1, 28)
+texture = ExtResource("2_qbi8c")
+hframes = 5
+vframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1198375188]
+libraries/ = SubResource("AnimationLibrary_i0qe0")
+
+[node name="jakk" type="Area2D" parent="." unique_id=136999465]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="jakk" unique_id=1302160801]
+position = Vector2(1, 28)
+scale = Vector2(2.3743877, 2.0132022)
+shape = SubResource("CapsuleShape2D_ks0bo")
+
+[node name="SpawnTimer" type="Timer" parent="." unique_id=1432761508]
+
+[node name="SoundPlayer" type="AudioStreamPlayer2D" parent="." unique_id=2051759628]
+stream = ExtResource("3_ic1ki")
+volume_db = 12.539
+max_distance = 1077.0
