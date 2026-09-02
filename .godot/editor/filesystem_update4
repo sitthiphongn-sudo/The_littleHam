@@ -1,4 +1,7 @@
-res://scenes/TutorialManager.gd
-res://scenes/TutorialHintUI.gd
-res://scenes/main_game.tscn
 res://scenes/death_screen.gdshader
+res://checkpoint.gd
+res://scenes/main_game.tscn
+res://assets/death_screen.tscn
+res://scenes/death_screen.gd
+res://scenes/player.gd
+res://scenes/camera_2d.gd

@@ -27,6 +27,7 @@ var _perspective_jump_offset := 0.0
 var _perspective_is_jumping := false
 var _is_dead := false  # สถานะตาย
 var _is_recovering := false  # true ตลอดช่วงที่กำลังเล่น/ค้าง recover -> กันไม่ให้ _physics_process ทับ
+var _death_tween: Tween = null  # คุม Tween ซูมกล้องตอนตาย
 
 @onready var idle_sprite: Sprite2D = $P_idle
 @onready var walk_sprite: Sprite2D = $P_walk
@@ -52,7 +53,6 @@ const RUN_STEP_INTERVAL := 0.22
 
 func _ready() -> void:
 	add_to_group("player")
-	# ค้นหา GrayscaleFilter อัตโนมัติหากไม่ได้ใส่ใน Inspector
 	if not grayscale_filter and has_node("../GrayscaleFilter"):
 		grayscale_filter = get_node("../GrayscaleFilter") as ColorRect
 
@@ -100,8 +100,13 @@ func _hold_recover_frame_then_play() -> void:
 # ระบบเกิดใหม่เมื่อกด Restart
 # =========================================================
 func respawn() -> void:
+	# 1. ยกเลิก Tween ซูมกล้องตอนตายที่อาจจะรันค้างอยู่
+	if _death_tween and _death_tween.is_running():
+		_death_tween.kill()
+
 	global_position = spawn_position
 	velocity = Vector2.ZERO
+	scale = Vector2(1.0, 1.0)
 	set_physics_process(true)   # เปิดระบบฟิสิกส์ให้กลับมาขยับได้
 	_is_dead = false            # รีเซ็ตสถานะตาย
 	is_hidden = false           # รีเซ็ตสถานะท่อ
@@ -113,14 +118,13 @@ func respawn() -> void:
 	if is_instance_valid(DeathScreen):
 		DeathScreen.visible = false
 
-	# รีเซ็ตสคริปต์กล้องกลับมาทำงานและแกว่งสั่นตามปกติ
+	# 2. รีเซ็ตระยะซูมและมุมเอียงของกล้องกลับมาเป็นปกติ
 	var cam := $Camera2D if has_node("Camera2D") else get_viewport().get_camera_2d()
 	if cam:
 		if cam.has_method("reset_camera"):
 			cam.reset_camera()
-		else:
-			cam.zoom = Vector2(1.0, 1.0)
-			cam.rotation_degrees = 0.0
+		cam.zoom = Vector2(1.0, 1.0)
+		cam.rotation_degrees = 0.0
 	
 	# รีเซ็ตตำแหน่งสไปรท์และค่ากระโดด
 	_perspective_jump_offset = 0.0
@@ -226,9 +230,6 @@ func _process_perspective_movement(delta: float) -> void:
 	if dir_y != 0:
 		TutorialManager.report_action("perspective", "up" if dir_y < 0 else "down")
 
-	# --- ลบ clamp ออกเพื่อให้อิงการชนกับ PerspectiveZone โดยตรง ---
-
-	# คำนวณอัตราส่วนขยาย (Scale) ตามความลึก Y
 	var depth_ratio: float = inverse_lerp(perspective_top_y, perspective_b, global_position.y)
 	depth_ratio = clamp(depth_ratio, 0.0, 1.0)
 	var new_scale: float = lerp(perspective_min_scale, perspective_max_scale, depth_ratio)
@@ -336,22 +337,19 @@ func _on_perspective_zone_body_exited(body: Node2D) -> void:
 # =========================================================
 func take_damage(_amount: int = 0) -> void:
 	if _is_dead or is_hidden:
-		return  # ป้องกันโดนโจมตีซ้ำ หรือโดนโจมตีขณะซ่อนตัวอยู่ในท่อ
+		return
 	
 	_is_dead = true
 	velocity = Vector2.ZERO
-	set_physics_process(false)  # หยุดควบคุมตัวละคร
+	set_physics_process(false)
 	footstep_player.stop()
 
-	# เล่นเสียงตาย
 	if death_player:
 		death_player.play()
 
-	# 1. แสดงเอฟเฟกต์ภาพขาวดำ
 	if grayscale_filter:
 		grayscale_filter.visible = true
 
-	# 2. ปรับ Layer ของ DeathScreen ให้เป็น 105 แล้วเปิดทันที
 	if is_instance_valid(DeathScreen):
 		if "layer" in DeathScreen:
 			DeathScreen.layer = 105
@@ -359,21 +357,22 @@ func take_damage(_amount: int = 0) -> void:
 		if DeathScreen.has_method("show_death_screen"):
 			DeathScreen.show_death_screen()
 
-	# 3. เล่นแอนิเมชันตายแบบช้าลง
 	_play_state(die_sprite)
 	if anim_player.has_animation("P_die"):
 		anim_player.play("P_die", -1, 0.35)
 
-	# 4. เรียกสั่งสคริปต์กล้องให้ทำเอฟเฟกต์ซูม + เอียงภาพ
 	var cam = $Camera2D if has_node("Camera2D") else get_viewport().get_camera_2d()
 	if cam:
 		if cam.has_method("play_death_zoom"):
 			cam.play_death_zoom()
 		else:
-			# สำรองกรณีสคริปต์กล้องไม่มีฟังก์ชัน play_death_zoom
 			if "ignore_rotation" in cam:
 				cam.ignore_rotation = false
 			cam.make_current()
-			var tween := create_tween().set_parallel(true)
-			tween.tween_property(cam, "zoom", Vector2(2.8, 2.8), 1.2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
-			tween.tween_property(cam, "rotation_degrees", 6.0, 1.2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+
+			if _death_tween and _death_tween.is_running():
+				_death_tween.kill()
+
+			_death_tween = create_tween().set_parallel(true)
+			_death_tween.tween_property(cam, "zoom", Vector2(2.8, 2.8), 1.2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+			_death_tween.tween_property(cam, "rotation_degrees", 6.0, 1.2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
