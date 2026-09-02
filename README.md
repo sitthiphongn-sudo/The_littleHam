@@ -1,7 +1,8 @@
 # 🎮 The Little Ham LABORATORY ESCAPE
 
 <!-- แนะนำให้ใส่ภาพ Banner หลัก หรือ GIF โชว์ Gameplay ตรงนี้ -->
-![Game Banner or Gameplay GIF]([ใส่ลิงก์รูปภาพตรงนี้])
+<img width="1672" height="941" alt="image" src="https://github.com/user-attachments/assets/c5c9975e-41a5-4bb1-9f1e-70a3c86d0a20" />
+
 
 ---
 
@@ -13,7 +14,7 @@
 *   **🖥️ แพลตฟอร์ม (Platform):** PC (Windows/Mac) Web Browser
 *   **👥 ทีมพัฒนา (Players):** Single-player 
 
-##🍀 แรงบัลดาลใจ (Inspiration)
+## 🍀 แรงบัลดาลใจ (Inspiration)
 Project นี้ได้แรงบัลดาลใจจาก Inside และ Limbo จากค่ายเกม PlayDead เนื่องจากตัวเกม มีภาพ วิธีการการ วิธีการเล่าเรื่่องที่แตกต่างจากในแนวเกมเดียวกัน พวกเราจึงมีความสนในในการทำเกม ในลักษณนี้ 
 ---
 
