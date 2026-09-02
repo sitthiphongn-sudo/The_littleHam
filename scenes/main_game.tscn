@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://d3j7jpy757jxa" path="res://assets/33p.png" id="13_ibnub"]
 [ext_resource type="PackedScene" uid="uid://dy8kcgbs3qo1h" path="res://owl.tscn" id="16_wdxbp"]
 [ext_resource type="PackedScene" uid="uid://byq8xx6vmcud" path="res://scenes/web_spider.tscn" id="17_yu8cv"]
+[ext_resource type="PackedScene" uid="uid://brbn473i3wahf" path="res://laser_2.tscn" id="18_dcudo"]
 [ext_resource type="PackedScene" uid="uid://dx302a5ygu1e0" path="res://jak.tscn" id="19_x3ega"]
 [ext_resource type="Texture2D" uid="uid://ccv3prlgut46s" path="res://assets/black.png" id="20_on6n6"]
 [ext_resource type="PackedScene" uid="uid://c3yiqxwy2vqlr" path="res://scenes/PauseMenu.tscn" id="21_ibnub"]
@@ -254,6 +255,10 @@ position = Vector2(1179.0001, 229.00002)
 rotation = 0.37974873
 scale = Vector2(0.47713456, 0.41312802)
 
+[node name="laser 2" parent="." unique_id=509430266 instance=ExtResource("18_dcudo")]
+position = Vector2(1749, 243.41882)
+scale = Vector2(0.96000123, 0.54808414)
+
 [node name="Web_spider" parent="." unique_id=2062916647 instance=ExtResource("17_yu8cv")]
 position = Vector2(465.00003, 177.68542)
 scale = Vector2(0.43832818, 0.38915476)
@@ -326,6 +331,7 @@ texture = ExtResource("6_ygxny")
 centered = false
 
 [node name="Black Gra3" type="Sprite2D" parent="StaticBody2D" unique_id=1506466864]
+visible = false
 position = Vector2(7300.338, -13.823088)
 rotation = -4.7123494
 scale = Vector2(0.060106944, 2.9365425)
@@ -388,7 +394,7 @@ position = Vector2(46, 400)
 script = ExtResource("6_wi4c7")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PerspectiveZone" unique_id=1069447504]
-polygon = PackedVector2Array(402, -88.79367, -27, -13, 521, 56.025146, 2876, 56.025146, 3424, 57.052216, 6266, 58.079315, 7055, 67.32306, 7531, 53.970978, 7335, -62.089478, 7140, -39.493652, 6946, -30.249878, 6876, -87.76657, 6370, -91.87491, 6328, -29.222809, 5970, -43.60199, 4931, -57.98114, 4783, -26.141571, 4576, -46.683228, 4512.38, -19.743164, 4340, -49.764465, 3827, -53.872803, 3594, -22.033234, 3324, -80.576996, 2956, -90.84784, 2506, -45.65616, 2220, -114.470764, 1772, -113.443665, 1398, -57.98114, 1009, -75.44156, 840, -90.84784)
+polygon = PackedVector2Array(402, -88.79367, -27, -13, 208, 82.72931, 482, 98.13556, 2876, 56.025146, 3424, 57.052216, 6266, 58.079315, 7055, 67.32306, 7531, 53.970978, 7335, -62.089478, 7140, -39.493652, 6946, -30.249878, 6876, -87.76657, 6370, -91.87491, 6328, -29.222809, 5970, -43.60199, 4931, -57.98114, 4783, -26.141571, 4576, -46.683228, 4512.38, -19.743164, 4340, -49.764465, 3827, -53.872803, 3594, -22.033234, 3324, -80.576996, 2956, -90.84784, 2506, -45.65616, 2220, -114.470764, 1772, -113.443665, 1398, -57.98114, 1009, -75.44156, 840, -90.84784)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1168219706]
 stream = ExtResource("7_wi4c7")
@@ -399,6 +405,7 @@ autoplay = true
 [node name="PauseMenu" parent="." unique_id=356230764 instance=ExtResource("21_ibnub")]
 
 [node name="Area2D" type="Area2D" parent="." unique_id=94109596]
+visible = false
 script = ExtResource("22_5wboo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1505943432]
@@ -409,6 +416,7 @@ shape = SubResource("RectangleShape2D_6de02")
 script = ExtResource("23_6de02")
 
 [node name="HintBox" type="PanelContainer" parent="TutorialHintUI" unique_id=2134199082]
+visible = false
 offset_right = 700.0
 offset_bottom = 90.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_hintbox")
