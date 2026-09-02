@@ -1,14 +1,13 @@
 # 🎮 The Little Ham LABORATORY ESCAPE
 
-> น้องแฮมๆ 
 <!-- แนะนำให้ใส่ภาพ Banner หลัก หรือ GIF โชว์ Gameplay ตรงนี้ -->
 ![Game Banner or Gameplay GIF]([ใส่ลิงก์รูปภาพตรงนี้])
 
 ---
 
 ## 📌 ภาพรวมโปรเจกต์ (Project Overview)
+เกม The Little Ham LABORATORY ESCAPE ผู้เล่นรับบทเป็นหนูแฮมสเตอร์ตัวเล็ก ซึ่งถูกจับมาเป็นสัตว์ทดลองภายในห้องปฏิบัติการลึกลับแห่งหนึ่ง วันหนึ่งเกิดเหตุการณ์บางอย่างทำให้ระบบกักกันเปิดออก Hamster จึงต้องพยายามหลบหนีออกจากห้องทดลองแห่งนี้ ระหว่างทาง ผู้เล่นจะต้องสำรวจสภาพแวดล้อม สังเกตสิ่งรอบตัว แก้ปริศนา และหลีกเลี่ยงอันตรายต่างๆ ตัวเกมเป็นหนึ่งใน project midterm ในรายวิชา Computer Game Development 
 
-[เขียนอธิบายรายละเอียดเกมเพิ่มเติม 2-3 บรรทัด เช่น พลอตเรื่องสั้น ๆ เป้าหมายของผู้เล่นคืออะไร พัฒนาขึ้นมาเนื่องในโอกาสอะไร เช่น Project ส่งอาจารย์, ร่วมงาน Game Jam หรือทำเพื่อฝึกฝนทักษะ]
 
 *   **🎮 แนวเกม (Genre):** 2D Game Puzzle-Platformer Horror Adventure เกมผจญภัยไขปริศนาระทึกขวัญ 
 *   **🖥️ แพลตฟอร์ม (Platform):** PC (Windows/Mac) Web Browser
@@ -28,12 +27,12 @@
 ## 🛠️ เครื่องมือที่ใช้พัฒนา (Tech Stack)
 
 ### Game Engine & Languages
-*   **Engine:** Godot 4.2
+*   **Engine:** Godot 4.7
 *   **Language:**  GDScript 
 
 ### Assets & Tools
-*   **Graphics/Art:** [เช่น Blender (3D Models) / Aseprite (Pixel Art) / Photoshop]
-*   **Audio:** [เช่น Audacity / FL Studio / อ้างอิงแหล่งที่มาของ Free Assets]
+*   **Graphics/Art:** 2D Sprite
+*   **Audio:** PIXABAY.COM 
 *   **Version Control:** Git & GitHub
 
 ---
@@ -73,12 +72,7 @@
 
 ## 🤝 สมาชิกทีมผู้พัฒนา (Credits & Contributors)
 
-*   **[ชื่อของคุณ/นามแฝง]** - [บทบาท เช่น Lead Developer / Gameplay Programmer]
-*   **[ชื่อเพื่อนในทีม]** - [บทบาท เช่น 3D Artist / UI Designer]
-*   **Third-Party Assets:** [ถ้ามีคลังสคริปต์, โมเดลฟรี หรือเพลงฟรีที่นำมาใช้ ให้ใส่ลิงก์ให้เครดิตตรงนี้]
+Sitthiphong Nakhonkhwang
+Phurin Sritan
+Kittinun Kaipaiwan
 
----
-
-## 📄 ใบอนุญาต (License)
-
-โปรเจกต์นี้อยู่ภายใต้ใบอนุญาต **[ใส่ชื่อสิทธิ์ เช่น MIT License]** ดูรายละเอียดเพิ่มเติมได้ที่ไฟล์ [LICENSE](LICENSE)
