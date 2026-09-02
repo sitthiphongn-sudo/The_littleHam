@@ -72,7 +72,7 @@
 
 ## 🤝 สมาชิกทีมผู้พัฒนา (Credits & Contributors)
 
-Sitthiphong Nakhonkhwang
-Phurin Sritan
-Kittinun Kaipaiwan
+1.Sitthiphong Nakhonkhwang
+2.Phurin Sritan
+3.Kittinun Kaipaiwan
 
