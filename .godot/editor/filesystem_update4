@@ -1,3 +1,4 @@
-res://laser_2.tscn
-res://scenes/death_screen.gdshader
+res://scenes/TutorialManager.gd
+res://scenes/TutorialHintUI.gd
 res://scenes/main_game.tscn
+res://scenes/death_screen.gdshader

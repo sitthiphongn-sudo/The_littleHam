@@ -243,15 +243,14 @@ hframes = 6
 vframes = 6
 
 [node name="P_die" type="Sprite2D" parent="." unique_id=932449098]
-visible = false
 scale = Vector2(0.16382656, 0.14376968)
 texture = ExtResource("8_ur7pv")
 hframes = 5
 vframes = 5
 
 [node name="recover" type="Sprite2D" parent="." unique_id=101556635]
-position = Vector2(-1, -7.0000005)
-scale = Vector2(0.15941346, 0.14235781)
+position = Vector2(0, -5.9604645e-08)
+scale = Vector2(0.12969895, 0.1254332)
 texture = ExtResource("10_3v2ag")
 hframes = 5
 vframes = 5

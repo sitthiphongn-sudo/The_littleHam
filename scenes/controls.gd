@@ -1,12 +1,21 @@
 extends Control
 
-const COLOR_NORMAL := Color(0.75, 0.78, 0.85, 0.75) # เทาอมฟ้า (ปุ่มที่ไม่ได้เลือก)
-const COLOR_SELECTED := Color(1, 1, 1, 1)            # ขาว (ปุ่มที่เลือกอยู่)
+## Controls / Settings screen script
+## Handles the Exit button on the Controls menu.
+
+# ชื่อ path ของ MainMenu scene ที่จะกลับไปตอนกด Exit
+# ถ้า path จริงในโปรเจกต์ไม่ตรง ให้แก้ตรงนี้
+@export var main_menu_scene_path: String = "res://scenes/MainMenu.tscn"
+
+@onready var exit_button: Button = $ExitButton
+
+
 func _ready() -> void:
-	# (Optional) ตั้งให้ปุ่ม Exit ได้รับ Focus อัตโนมัติ รองรับการใช้ Joypad / Keyboard Navigation
-	$ExitButton.grab_focus()
+	exit_button.pressed.connect(_on_exit_pressed)
 
 
-func _on_exit_button_pressed() -> void:
-	# เมื่อกดปุ่ม Exit ให้สลับกลับไปหน้า MainMenu
-	get_tree().change_scene_to_file("res://scenes/MainMenu.tscn")
+func _on_exit_pressed() -> void:
+	if ResourceLoader.exists(main_menu_scene_path):
+		get_tree().change_scene_to_file(main_menu_scene_path)
+	else:
+		push_warning("ไม่พบ scene ที่ path: %s กรุณาแก้ main_menu_scene_path ให้ตรงกับโปรเจกต์" % main_menu_scene_path)

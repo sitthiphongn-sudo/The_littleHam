@@ -11,12 +11,15 @@ signal hint_dismissed(hint_id: String)
 signal tutorial_finished
 
 ## ข้อความ hint ทั้งหมด แก้ไข/เพิ่มลดได้ตรงนี้ที่เดียว
+
 var hints: Dictionary = {
-	"move": "กด A และ D ทั้งสองปุ่ม เพื่อเดิน",
-	"jump": "กด Space เพื่อกระโดด",
-	"run":  "กด Shift ค้างไว้ขณะเดินเพื่อวิ่ง",
-	"perspective": "โซนนี้เปลี่ยนมุมมอง กด W และ S ทั้งสองปุ่ม เพื่อเดินขึ้น-เดินลง",
+	"move": "Press  A  and  D  to move",
+	"jump": "Press  Space  to jump",
+	"run":  "Hold  Shift  while moving to run",
+	"perspective": "This zone changes the perspective. Press  W  and  S  to move up and down",
 }
+
+
 
 ## hint บางอันต้องทำให้ "ครบทุกด้าน" ก่อนถึงจะถือว่าผ่าน
 ## เช่น "move" ต้องกดทั้ง A และ D ไม่ใช่กดด้านใดด้านหนึ่งแล้วผ่านเลย

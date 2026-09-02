@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://xa3vvxmvji8g"]
+
+[ext_resource type="Script" uid="uid://d3g6sl47270md" path="res://testtt_3.gd" id="1_5qu21"]
+[ext_resource type="Texture2D" uid="uid://bubqt26s813q5" path="res://assets/#U0e17#U0e48#U0e2d#U0e19#U0e49#U0e33 2.png" id="1_gx0pf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5qu21"]
+size = Vector2(1858.0472, 274.54736)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cbjq0"]
+size = Vector2(140, 220)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_td3xj"]
+size = Vector2(140, 220)
+
+[node name="ท่อน้ำ3" type="Node2D" unique_id=2034907371]
+script = ExtResource("1_5qu21")
+
+[node name="1" type="Sprite2D" parent="." unique_id=2043157294]
+position = Vector2(-3, 4)
+scale = Vector2(0.70073664, 0.7361878)
+texture = ExtResource("1_gx0pf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="1" unique_id=1705067317]
+position = Vector2(8.562412, -8.150095)
+scale = Vector2(1, 0.9825034)
+shape = SubResource("RectangleShape2D_5qu21")
+
+[node name="EntranceZone" type="Area2D" parent="." unique_id=2071107620]
+position = Vector2(-620, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EntranceZone" unique_id=2037620232]
+position = Vector2(4, -40)
+shape = SubResource("RectangleShape2D_cbjq0")
+
+[node name="PromptLabel" type="Label" parent="EntranceZone" unique_id=1316910136]
+offset_left = -50.0
+offset_top = -140.0
+offset_right = 50.0
+offset_bottom = -110.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "กด E เพื่อซ่อน"
+horizontal_alignment = 1
+
+[node name="ExitZone" type="Area2D" parent="." unique_id=1375598649]
+position = Vector2(10, 64)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitZone" unique_id=933539069]
+position = Vector2(599, -56)
+shape = SubResource("RectangleShape2D_td3xj")
+
+[node name="PromptLabel" type="Label" parent="ExitZone" unique_id=894261015]
+offset_left = -50.0
+offset_top = -140.0
+offset_right = 50.0
+offset_bottom = -110.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "กด E เพื่อออก"
+horizontal_alignment = 1

@@ -22,12 +22,20 @@
 [ext_resource type="PackedScene" uid="uid://dy8kcgbs3qo1h" path="res://owl.tscn" id="16_wdxbp"]
 [ext_resource type="PackedScene" uid="uid://byq8xx6vmcud" path="res://scenes/web_spider.tscn" id="17_yu8cv"]
 [ext_resource type="PackedScene" uid="uid://brbn473i3wahf" path="res://laser_2.tscn" id="18_dcudo"]
+[ext_resource type="PackedScene" uid="uid://j6heqnpbw22w" path="res://drone_2.tscn" id="19_dp0eu"]
 [ext_resource type="PackedScene" uid="uid://dx302a5ygu1e0" path="res://jak.tscn" id="19_x3ega"]
 [ext_resource type="Texture2D" uid="uid://ccv3prlgut46s" path="res://assets/black.png" id="20_on6n6"]
+[ext_resource type="PackedScene" uid="uid://b0ljudslpe6v8" path="res://drone_3.tscn" id="20_urnot"]
+[ext_resource type="PackedScene" uid="uid://r3lee25wbtyb" path="res://laserjump.tscn" id="21_6vdpn"]
+[ext_resource type="PackedScene" uid="uid://ds6ly73u6ln3h" path="res://scenes/testttt.tscn" id="21_307no"]
 [ext_resource type="PackedScene" uid="uid://c3yiqxwy2vqlr" path="res://scenes/PauseMenu.tscn" id="21_ibnub"]
 [ext_resource type="Script" uid="uid://cp5w0raev601s" path="res://scenes/EndTriggerZone.gd" id="22_5wboo"]
+[ext_resource type="PackedScene" uid="uid://b5t3ca0gjj83m" path="res://laserjump_2.tscn" id="22_jmxl0"]
 [ext_resource type="Script" uid="uid://cu2kb006lcfr4" path="res://scenes/TutorialHintUI.gd" id="23_6de02"]
+[ext_resource type="PackedScene" uid="uid://byx2j3wir1x6d" path="res://laserjump_3.tscn" id="23_sgdes"]
 [ext_resource type="FontFile" uid="uid://m62b448aeo58" path="res://assets/Back Nature.otf" id="24_hintfont"]
+[ext_resource type="PackedScene" uid="uid://d3cakr4d8kqrl" path="res://testtt2.tscn" id="27_sgdes"]
+[ext_resource type="PackedScene" uid="uid://xa3vvxmvji8g" path="res://testtt3.tscn" id="28_ibep1"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_wjob3"]
 viewport_path = NodePath("VideoBgViewport1")
@@ -47,8 +55,11 @@ viewport_path = NodePath("VideoBgViewport5")
 [sub_resource type="ViewportTexture" id="ViewportTexture_5wboo"]
 viewport_path = NodePath("VideoBgViewport6")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0rdsr"]
-size = Vector2(1660, 21)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rihjw"]
+size = Vector2(7530.5, 23.352112)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xb4t0"]
+size = Vector2(117, 509.16266)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6de02"]
 size = Vector2(172, 478.4856)
@@ -197,101 +208,136 @@ centered = false
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=799261376]
 
 [node name="Map1" type="Sprite2D" parent="." unique_id=1335916092]
-visible = false
-position = Vector2(31, -8)
+position = Vector2(6249.9995, -16.433338)
 scale = Vector2(0.6712231, 0.5004491)
 texture = ExtResource("3_nqdth")
 centered = false
 
 [node name="Map2" type="Sprite2D" parent="." unique_id=1487862702]
-visible = false
-position = Vector2(1261.0001, -20.541674)
+position = Vector2(3736, -4.1083984)
 scale = Vector2(0.935, 0.605)
 texture = ExtResource("5_5cypo")
 centered = false
 
 [node name="Map3" type="Sprite2D" parent="." unique_id=622931654]
-visible = false
-position = Vector2(2514, -10.270836)
+position = Vector2(5038, -15.406253)
 scale = Vector2(0.730539, 0.49662384)
 texture = ExtResource("3_ygxny")
 centered = false
 
 [node name="Map4" type="Sprite2D" parent="." unique_id=491201663]
-visible = false
-position = Vector2(3635.9998, -5.135418)
+position = Vector2(1198, -1.0270829)
 scale = Vector2(0.730539, 0.49662384)
 texture = ExtResource("9_sp04v")
 centered = false
 
 [node name="Map5" type="Sprite2D" parent="." unique_id=1719574618]
-visible = false
-position = Vector2(4859, -13.352086)
+position = Vector2(2461, 3.0812502)
 scale = Vector2(0.730539, 0.49662384)
 texture = ExtResource("12_yu8cv")
 centered = false
 
 [node name="Map6" type="Sprite2D" parent="." unique_id=796911701]
-visible = false
-position = Vector2(6068, -11.29792)
+position = Vector2(-46, -3.081251)
 scale = Vector2(0.730539, 0.49662384)
 texture = ExtResource("13_ibnub")
 centered = false
 
 [node name="Player" parent="." unique_id=249151801 groups=["player"] instance=ExtResource("3_d2op2")]
 position = Vector2(-145, -49)
-perspective_bottom_y = 351.0
 
 [node name="Enemy" parent="." unique_id=426305332 instance=ExtResource("9_2l77h")]
-position = Vector2(2147, 361.53342)
+position = Vector2(2935, 380.021)
 rotation = 3.1415927
 scale = Vector2(0.81626195, -0.69955754)
 
 [node name="owl" parent="." unique_id=1104382561 instance=ExtResource("16_wdxbp")]
-position = Vector2(4302, 312.23343)
+position = Vector2(4300, 233.14798)
 
 [node name="Spider" parent="." unique_id=1564601214 instance=ExtResource("5_70vka")]
-position = Vector2(1179.0001, 229.00002)
+position = Vector2(6245.0005, 121.19599)
 rotation = 0.37974873
 scale = Vector2(0.47713456, 0.41312802)
 
 [node name="laser 2" parent="." unique_id=509430266 instance=ExtResource("18_dcudo")]
-position = Vector2(1749, 243.41882)
+position = Vector2(1788, 266.01465)
 scale = Vector2(0.96000123, 0.54808414)
 
+[node name="drone2" parent="." unique_id=964690544 instance=ExtResource("19_dp0eu")]
+position = Vector2(2037, 203.36255)
+scale = Vector2(0.69957656, 0.5796093)
+
+[node name="drone3" parent="." unique_id=210863967 instance=ExtResource("20_urnot")]
+position = Vector2(2235, 253.68964)
+scale = Vector2(0.9898811, 0.85992515)
+
+[node name="laserjump" parent="." unique_id=1892099697 instance=ExtResource("21_6vdpn")]
+position = Vector2(1851.0001, 325.58548)
+rotation = 0.40983036
+scale = Vector2(-0.26396456, 0.14479603)
+
+[node name="laserjump2" parent="." unique_id=1968156570 instance=ExtResource("22_jmxl0")]
+position = Vector2(1819.0001, 330.72092)
+rotation = -1.1191752
+scale = Vector2(0.2710322, 0.2350055)
+
+[node name="laserjump3" parent="." unique_id=684236990 instance=ExtResource("22_jmxl0")]
+position = Vector2(2016, 330.7209)
+rotation = 0.83261335
+scale = Vector2(0.2711862, 0.19934076)
+
+[node name="laserjump 3" parent="." unique_id=262508634 instance=ExtResource("23_sgdes")]
+position = Vector2(2318, 337.91043)
+rotation = -0.7053129
+scale = Vector2(0.3960118, 0.17537823)
+
 [node name="Web_spider" parent="." unique_id=2062916647 instance=ExtResource("17_yu8cv")]
-position = Vector2(465.00003, 177.68542)
+position = Vector2(5280, 174.60422)
 scale = Vector2(0.43832818, 0.38915476)
 
 [node name="Web_spider2" parent="." unique_id=1805248838 instance=ExtResource("17_yu8cv")]
-position = Vector2(586, 155.08963)
+position = Vector2(5489, 194.1188)
 scale = Vector2(0.43832818, 0.38915476)
 
 [node name="Web_spider3" parent="." unique_id=72139919 instance=ExtResource("17_yu8cv")]
-position = Vector2(739, 177.68547)
+position = Vector2(5670, 221.85007)
 scale = Vector2(0.43832818, 0.38915476)
 
 [node name="Web_spider4" parent="." unique_id=1782352682 instance=ExtResource("17_yu8cv")]
-position = Vector2(925, 171.52296)
+position = Vector2(5881, 171.52298)
 scale = Vector2(0.43832818, 0.38915476)
 
 [node name="jak" parent="." unique_id=101729057 instance=ExtResource("19_x3ega")]
-position = Vector2(3050, 353.31674)
+position = Vector2(6483, 353.31677)
+
+[node name="jak2" parent="." unique_id=158556321 instance=ExtResource("19_x3ega")]
+position = Vector2(7054, 362.56052)
+
+[node name="jak3" parent="." unique_id=1420857401 instance=ExtResource("19_x3ega")]
+position = Vector2(6860, 321.47717)
+
+[node name="jak4" parent="." unique_id=700554515 instance=ExtResource("19_x3ega")]
+position = Vector2(6675, 313.26053)
+
+[node name="ท่อน้ำ1" parent="." unique_id=902260136 instance=ExtResource("21_307no")]
+position = Vector2(3978.0002, 354.3438)
+scale = Vector2(0.10554913, 0.15294674)
+
+[node name="ท่อน้ำ2" parent="." unique_id=1785225106 instance=ExtResource("27_sgdes")]
+position = Vector2(4238.0005, 349.20844)
+scale = Vector2(0.1079556, 0.20142272)
+
+[node name="ท่อน้ำ3" parent="." unique_id=2034907371 instance=ExtResource("28_ibep1")]
+position = Vector2(4499.9995, 353.31677)
+scale = Vector2(0.13272391, 0.14860213)
 
 [node name="PlayerSpawn" type="Marker2D" parent="." unique_id=1707637133]
 position = Vector2(368, 359.47925)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1837830155]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=766461665]
-position = Vector2(832, 377)
-shape = SubResource("RectangleShape2D_0rdsr")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=1126841232]
-position = Vector2(2154, 377)
-shape = SubResource("RectangleShape2D_0rdsr")
-
 [node name="Black Gra_Left" type="Sprite2D" parent="StaticBody2D" unique_id=26555746]
+visible = false
 position = Vector2(-49, -10.270837)
 scale = Vector2(0.23911332, 0.19931951)
 texture = ExtResource("6_ygxny")
@@ -324,6 +370,7 @@ texture = ExtResource("6_ygxny")
 centered = false
 
 [node name="Black Gra2" type="Sprite2D" parent="StaticBody2D" unique_id=1384203829]
+visible = false
 position = Vector2(-33.99997, 459.00003)
 rotation = -1.5711815
 scale = Vector2(0.060106944, 2.9313858)
@@ -331,7 +378,6 @@ texture = ExtResource("6_ygxny")
 centered = false
 
 [node name="Black Gra3" type="Sprite2D" parent="StaticBody2D" unique_id=1506466864]
-visible = false
 position = Vector2(7300.338, -13.823088)
 rotation = -4.7123494
 scale = Vector2(0.060106944, 2.9365425)
@@ -389,12 +435,23 @@ position = Vector2(7371.375, 215.90527)
 scale = Vector2(0.726536, 1.744277)
 texture = ExtResource("20_on6n6")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=685498586]
+position = Vector2(3720.25, 408.7793)
+shape = SubResource("RectangleShape2D_rihjw")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=102071639]
+visible = false
+position = Vector2(-68.5, 244.58133)
+scale = Vector2(-1.0631969, 1)
+shape = SubResource("RectangleShape2D_xb4t0")
+
 [node name="PerspectiveZone" type="Area2D" parent="." unique_id=2024167839]
 position = Vector2(46, 400)
 script = ExtResource("6_wi4c7")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PerspectiveZone" unique_id=1069447504]
-polygon = PackedVector2Array(402, -88.79367, -27, -13, 208, 82.72931, 482, 98.13556, 2876, 56.025146, 3424, 57.052216, 6266, 58.079315, 7055, 67.32306, 7531, 53.970978, 7335, -62.089478, 7140, -39.493652, 6946, -30.249878, 6876, -87.76657, 6370, -91.87491, 6328, -29.222809, 5970, -43.60199, 4931, -57.98114, 4783, -26.141571, 4576, -46.683228, 4512.38, -19.743164, 4340, -49.764465, 3827, -53.872803, 3594, -22.033234, 3324, -80.576996, 2956, -90.84784, 2506, -45.65616, 2220, -114.470764, 1772, -113.443665, 1398, -57.98114, 1009, -75.44156, 840, -90.84784)
+position = Vector2(-85, -35.3853)
+polygon = PackedVector2Array(402, -88.79367, -27, -13, 208, 82.72931, 482, 98.13556, 2876, 56.025146, 3424, 57.052216, 6266, 58.079315, 7055, 67.32306, 7531, 53.970978, 7335, -62.089478, 7140, -39.493652, 6946, -30.249878, 6876, -87.76657, 6370, -91.87491, 6328, -29.222809, 5970, -43.60199, 4931, -57.98114, 4783, -26.141571, 4576, -46.683228, 4512.38, -19.743164, 4340, -49.764465, 3827, -53.872803, 3594, -22.033234, 3324, -80.576996, 2956, -90.84784, 2506, -45.65616, 2431, -27.731262, 2372, -36.975006, 2242, -73.95001, 1744, -52.381256, 1405, -18.487488, 1009, -75.44156, 840, -90.84784)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1168219706]
 stream = ExtResource("7_wi4c7")
@@ -403,9 +460,9 @@ pitch_scale = 0.84
 autoplay = true
 
 [node name="PauseMenu" parent="." unique_id=356230764 instance=ExtResource("21_ibnub")]
+visible = false
 
 [node name="Area2D" type="Area2D" parent="." unique_id=94109596]
-visible = false
 script = ExtResource("22_5wboo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1505943432]
@@ -413,10 +470,10 @@ position = Vector2(7276, 218.83653)
 shape = SubResource("RectangleShape2D_6de02")
 
 [node name="TutorialHintUI" type="CanvasLayer" parent="." unique_id=1633587083]
+visible = false
 script = ExtResource("23_6de02")
 
 [node name="HintBox" type="PanelContainer" parent="TutorialHintUI" unique_id=2134199082]
-visible = false
 offset_right = 700.0
 offset_bottom = 90.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_hintbox")

@@ -1,11 +1,12 @@
 extends Control
 
-# ลากปุ่มทั้ง 4 มาใส่ใน Inspector หรือปล่อยให้สคริปต์หาผ่าน group ก็ได้
+# ลากปุ่มทั้ง 5 มาใส่ใน Inspector หรือปล่อยให้สคริปต์หาผ่าน group ก็ได้
 @onready var menu_buttons: Array[Button] = [
 	$VBoxRoot/MenuBox/NewGameButton,
 	$VBoxRoot/MenuBox/ControlsButton,
 	$VBoxRoot/MenuBox/SettingsButton,
 	$VBoxRoot/MenuBox/CreditsButton,
+	$VBoxRoot/MenuBox/ExitButton, # เพิ่ม ExitButton เข้าใน Array เพื่อให้สคริปต์ต่อสัญญาณ pressed
 ]
 
 const COLOR_NORMAL := Color(0.75, 0.78, 0.85, 0.75) # เทาอมฟ้า (ปุ่มที่ไม่ได้เลือก)
@@ -51,11 +52,13 @@ func _on_button_pressed(button_name: String) -> void:
 		"NewGameButton":
 			Transition.change_scene("res://scenes/intro_start_game.tscn", 1.7)
 		"ControlsButton":
-			Transition.change_scene("res://scenes/controls.tscn", 1.5)
+			Transition.change_scene("res://scenes/Controls.tscn", 1.5)
 		"SettingsButton":
 			Transition.change_scene("res://scenes/SceneSetting.tscn", 1.5)
 		"CreditsButton":
-			print("Credits pressed")
+			Transition.change_scene("res://scripts/credits.tscn", 1.5)
+		"ExitButton":
+			get_tree().quit()
 
 
 func _unhandled_input(event: InputEvent) -> void:

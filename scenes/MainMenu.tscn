@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bcwyqpat0mk7g"]
 
-[ext_resource type="Script" uid="uid://bio6o6atw5u25" path="res://scripts/MainMenu.gd" id="1_menu"]
+[ext_resource type="Script" uid="uid://bc6273pip1klk" path="res://scripts/MainMenu.gd" id="1_menu"]
 [ext_resource type="VideoStream" uid="uid://dahawbr0qe7j8" path="res://assets/menu_VDO.ogv" id="2_2wh52"]
 [ext_resource type="FontFile" uid="uid://m62b448aeo58" path="res://assets/Back Nature.otf" id="3_2wh52"]
 
@@ -69,7 +69,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("3_2wh52")
 theme_override_font_sizes/font_size = 80
-text = "LITTLE HAM"
+text = "LITTLE HAMS"
 horizontal_alignment = 1
 
 [node name="RomanLabel" type="Label" parent="VBoxRoot" unique_id=977532924]
@@ -105,7 +105,7 @@ size_flags_horizontal = 4
 theme = SubResource("Theme_menu")
 theme_override_fonts/font = ExtResource("3_2wh52")
 theme_override_font_sizes/font_size = 25
-text = "controls"
+text = "Controls"
 flat = true
 
 [node name="SettingsButton" type="Button" parent="VBoxRoot/MenuBox" unique_id=1359278044]
@@ -114,7 +114,7 @@ size_flags_horizontal = 4
 theme = SubResource("Theme_menu")
 theme_override_fonts/font = ExtResource("3_2wh52")
 theme_override_font_sizes/font_size = 25
-text = "setting"
+text = "Setting"
 flat = true
 
 [node name="CreditsButton" type="Button" parent="VBoxRoot/MenuBox" unique_id=2007625240]
@@ -124,6 +124,15 @@ theme = SubResource("Theme_menu")
 theme_override_fonts/font = ExtResource("3_2wh52")
 theme_override_font_sizes/font_size = 25
 text = "Credits"
+flat = true
+
+[node name="ExitButton" type="Button" parent="VBoxRoot/MenuBox" unique_id=358830725]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = SubResource("Theme_menu")
+theme_override_fonts/font = ExtResource("3_2wh52")
+theme_override_font_sizes/font_size = 25
+text = "Exit"
 flat = true
 
 [node name="Vignette" type="ColorRect" parent="." unique_id=258354580]

@@ -1,7 +1,8 @@
-AnimatedSprite2D
+Sprite2D
 CollisionShape2D
 Area2D
-Sprite2D
+AnimatedSprite2D
+Node2D
 CharacterBody2D
 Label
 Control
@@ -11,4 +12,3 @@ SubViewport
 AudioStreamPlayer2D
 ColorRect
 VBoxContainer
-CanvasModulate

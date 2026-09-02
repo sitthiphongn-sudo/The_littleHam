@@ -10,8 +10,8 @@ const JUMP_VELOCITY = -300.0
 
 # --- ตั้งค่าโหมด Perspective (เดินลึก) ---
 @export var perspective_move_speed: float = 40.0
-@export var perspective_top_y: float = 0.0        # ตำแหน่ง y จุดไกลสุด
-@export var perspective_bottom_y: float = 100.0   # ตำแหน่ง y จุดใกล้สุด
+@export var perspective_top_y: float = 0.0        # ตำแหน่ง y จุดไกลสุด (ใช้อ้างอิงการคำนวณ Scale)
+@export var perspective_b: float = 500.0          # ตำแหน่ง y จุดใกล้สุด (ใช้อ้างอิงการคำนวณ Scale)
 @export var perspective_min_scale: float = 0.4
 @export var perspective_max_scale: float = 1.0
 @export var perspective_jump_force: float = -300.0
@@ -21,6 +21,7 @@ const JUMP_VELOCITY = -300.0
 @export var recover_hold_duration: float = 3.0  # วินาทีที่ค้างนิ่งที่เฟรมแรกก่อนเล่น recover
 
 var in_perspective_mode := false
+var is_hidden := false  # สถานะซ่อนตัวในท่อ
 var _perspective_jump_velocity := 0.0
 var _perspective_jump_offset := 0.0
 var _perspective_is_jumping := false
@@ -58,6 +59,23 @@ func _ready() -> void:
 	_hold_recover_frame_then_play()
 
 
+# =========================================================
+# ระบบซ่อนตัวในท่อ
+# =========================================================
+func hide_in_pipe(pipe_pos: Vector2) -> void:
+	is_hidden = true
+	visible = false
+	global_position = pipe_pos
+	velocity = Vector2.ZERO
+	set_physics_process(false)
+
+func exit_pipe(exit_pos: Vector2) -> void:
+	is_hidden = false
+	visible = true
+	global_position = exit_pos
+	set_physics_process(true)
+
+
 # ตอนเข้าเกม: โชว์เฟรมแรกของ recover นิ่ง ๆ ตาม recover_hold_duration วินาที แล้วค่อยเล่น animation
 func _hold_recover_frame_then_play() -> void:
 	if not anim_player.has_animation("recover"):
@@ -86,6 +104,8 @@ func respawn() -> void:
 	velocity = Vector2.ZERO
 	set_physics_process(true)   # เปิดระบบฟิสิกส์ให้กลับมาขยับได้
 	_is_dead = false            # รีเซ็ตสถานะตาย
+	is_hidden = false           # รีเซ็ตสถานะท่อ
+	visible = true              # แสดงสไปรท์เมื่อเกิดใหม่
 	
 	# ปิดเอฟเฟกต์ขาวดำ และซ่อนหน้าจอ DeathScreen
 	if grayscale_filter:
@@ -126,8 +146,8 @@ func respawn() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	if _is_recovering:
-		return  # กำลังค้าง/เล่น recover อยู่ -> ห้ามระบบเดิน/idle มาทับ animation
+	if _is_recovering or is_hidden:
+		return  # กำลังค้าง/เล่น recover อยู่ หรือซ่อนในท่อ -> ห้ามระบบเดิน/idle มาทับ animation
 
 	if in_perspective_mode:
 		_process_perspective_movement(delta)
@@ -206,9 +226,10 @@ func _process_perspective_movement(delta: float) -> void:
 	if dir_y != 0:
 		TutorialManager.report_action("perspective", "up" if dir_y < 0 else "down")
 
-	global_position.y = clamp(global_position.y, perspective_top_y, perspective_bottom_y)
+	# --- ลบ clamp ออกเพื่อให้อิงการชนกับ PerspectiveZone โดยตรง ---
 
-	var depth_ratio: float = inverse_lerp(perspective_top_y, perspective_bottom_y, global_position.y)
+	# คำนวณอัตราส่วนขยาย (Scale) ตามความลึก Y
+	var depth_ratio: float = inverse_lerp(perspective_top_y, perspective_b, global_position.y)
 	depth_ratio = clamp(depth_ratio, 0.0, 1.0)
 	var new_scale: float = lerp(perspective_min_scale, perspective_max_scale, depth_ratio)
 	scale = Vector2(new_scale, new_scale)
@@ -314,8 +335,8 @@ func _on_perspective_zone_body_exited(body: Node2D) -> void:
 # ระบบรับความเสียหายและการตาย (ซูมเข้า + เอียงกล้อง + DeathScreen)
 # =========================================================
 func take_damage(_amount: int = 0) -> void:
-	if _is_dead:
-		return  # ป้องกันโดนโจมตีซ้ำ
+	if _is_dead or is_hidden:
+		return  # ป้องกันโดนโจมตีซ้ำ หรือโดนโจมตีขณะซ่อนตัวอยู่ในท่อ
 	
 	_is_dead = true
 	velocity = Vector2.ZERO
