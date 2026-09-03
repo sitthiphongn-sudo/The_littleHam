@@ -19,6 +19,9 @@
 ## 🍀 แรงบัลดาลใจ (Inspiration)
 
 Project นี้ได้แรงบัลดาลใจจาก Inside และ Limbo จากค่ายเกม PlayDead เนื่องจากตัวเกม มีภาพ วิธีการการ วิธีการเล่าเรื่่องที่แตกต่างจากในแนวเกมเดียวกัน พวกเราจึงมีความสนในในการทำเกม ในลักษณนี้ 
+<img width="596" height="335" alt="image" src="https://github.com/user-attachments/assets/e0ac9845-0a47-4d11-a51d-08ef75ccdefa" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/56e95035-5206-4de4-849a-7dbc2757960a" />
+
 
 ---
 
@@ -27,6 +30,8 @@ Project นี้ได้แรงบัลดาลใจจาก Inside แ�
 *   **[ระบบที่ 1]:** [ตัวเกมโดดเด่นในเรื่องการทำ Graphics/Art เพื่อให้เกมมีความสวยงาน แม้เป็นเกม 2D]
 *   **[ระบบที่ 2]:** [มีศัตรูคอยเดินลาดตระเวนและไล่ตามผู้เล่น]
 *   **[ระบบที่ 3]:** [ด่านการเล่นที่มีกลไกปริศนาแตกต่างกัน 5 ด่าน]
+
+<img width="1671" height="941" alt="33p" src="https://github.com/user-attachments/assets/240ba6c9-5953-4cd6-9472-01331334aa29" />
 
 
 ---
