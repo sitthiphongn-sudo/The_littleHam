@@ -4,6 +4,8 @@
 [ext_resource type="Script" uid="uid://cmi518xegci3w" path="res://scenes/owl (4).gd" id="1_eyas1"]
 [ext_resource type="Texture2D" uid="uid://djanvdrkwu624" path="res://assets/flynew.png" id="2_eyas1"]
 [ext_resource type="Texture2D" uid="uid://buvuxpxu3koj1" path="res://assets/owl idle.png" id="3_7aicp"]
+[ext_resource type="Texture2D" uid="uid://cmbgat8yqmrm3" path="res://assets/shadow.png" id="5_7aicp"]
+[ext_resource type="AudioStream" uid="uid://cl6qmd1vsyvux" path="res://733583__benignchaos__dragon-wings.wav" id="6_q04jw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q04jw"]
 atlas = ExtResource("1_dm34n")
@@ -624,3 +626,11 @@ shape = SubResource("CircleShape2D_rihjw")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=945912645]
 position = Vector2(1, 2)
 shape = SubResource("CapsuleShape2D_xb4t0")
+
+[node name="ShadowSprite" type="Sprite2D" parent="." unique_id=428571251]
+position = Vector2(-4, 39)
+scale = Vector2(0.059902713, -0.038131792)
+texture = ExtResource("5_7aicp")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1125638898]
+stream = ExtResource("6_q04jw")

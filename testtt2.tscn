@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://d3cakr4d8kqrl"]
 
 [ext_resource type="Script" uid="uid://rtdu6hpqp7aq" path="res://testtt_2.gd" id="1_2gxxb"]
-[ext_resource type="Texture2D" uid="uid://dxgdklmwfixfd" path="res://assets/#U0e17#U0e48#U0e2d#U0e19#U0e49#U0e333.png" id="1_041bb"]
+[ext_resource type="Texture2D" uid="uid://dxgdklmwfixfd" path="res://assets/ท่อน้ำ3.png" id="1_041bb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2gxxb"]
 size = Vector2(1858.0472, 274.54736)
@@ -31,14 +31,15 @@ position = Vector2(-620, 32)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EntranceZone" unique_id=753753134]
 shape = SubResource("RectangleShape2D_yu3q7")
 
-[node name="PromptLabel" type="Label" parent="EntranceZone" unique_id=1355076898]
-offset_left = -50.0
-offset_top = -140.0
-offset_right = 50.0
-offset_bottom = -110.0
+[node name="PromptLabel" type="Label" parent="EntranceZone" unique_id=839354026]
+offset_left = -83.0
+offset_top = -158.0
+offset_right = 143.0
+offset_bottom = -113.0
+scale = Vector2(0.9450076, 1.0750945)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 20
-text = "กด E เพื่อซ่อน"
+theme_override_font_sizes/font_size = 32
+text = "Press E to hide"
 horizontal_alignment = 1
 
 [node name="ExitZone" type="Area2D" parent="." unique_id=1299518189]
@@ -48,12 +49,12 @@ position = Vector2(10, 64)
 position = Vector2(559, -68)
 shape = SubResource("RectangleShape2D_gj4y6")
 
-[node name="PromptLabel" type="Label" parent="ExitZone" unique_id=611176490]
-offset_left = -50.0
-offset_top = -140.0
-offset_right = 50.0
-offset_bottom = -110.0
+[node name="PromptLabel" type="Label" parent="ExitZone" unique_id=552862324]
+offset_left = 452.0
+offset_top = -184.0
+offset_right = 668.0
+offset_bottom = -139.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 20
-text = "กด E เพื่อออก"
+theme_override_font_sizes/font_size = 32
+text = "Press E to exit"
 horizontal_alignment = 1

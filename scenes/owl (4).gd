@@ -14,6 +14,7 @@ extends CharacterBody2D
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var hitbox: Area2D = $Area2D
+@onready var attack_audio: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 enum State {
 	IDLE,
@@ -91,6 +92,8 @@ func _physics_process(delta: float) -> void:
 					velocity = Vector2.ZERO
 					if _attack_timer <= 0.0:
 						_start_attack()
+					elif sprite.animation != "idle":
+						sprite.play("idle")
 				else:
 					velocity = to_target.normalized() * fly_speed
 					if sprite.animation != "fly":
@@ -129,6 +132,7 @@ func _start_attack() -> void:
 	velocity = Vector2.ZERO
 	sprite.play("attack")
 	sprite.frame = 0
+	attack_audio.play()
 
 
 func _on_sprite_frame_changed() -> void:

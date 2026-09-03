@@ -1,6 +1,12 @@
 [gd_scene format=3 uid="uid://c3fc56hh1qg4t"]
 
 [ext_resource type="Texture2D" uid="uid://bm2b67yl8hiot" path="res://assets/-Animate-this-exact-.png" id="1_jvnyo"]
+[ext_resource type="Texture2D" uid="uid://cmbgat8yqmrm3" path="res://assets/shadow.png" id="2_e5cli"]
+[ext_resource type="Script" uid="uid://ct1xwvidfe4b" path="res://scenes/owl_cutscene.gd" id="3_cutscene"]
+[ext_resource type="AudioStream" uid="uid://bb0rwuu7wyjyg" path="res://assets/446133__justinvoke__crack-shatter.wav" id="4_uwki2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_owlzone"]
+size = Vector2(683, 521)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e5cli"]
 atlas = ExtResource("1_jvnyo")
@@ -281,9 +287,32 @@ animations = [{
 "speed": 28.0
 }]
 
-[node name="Node2D" type="Node2D" unique_id=198915940]
+[node name="owlcutsecene" type="Node2D" unique_id=198915940]
+script = ExtResource("3_cutscene")
+
+[node name="TriggerZone" type="Area2D" parent="." unique_id=637319728]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerZone" unique_id=785285856]
+position = Vector2(207.5, 5)
+shape = SubResource("RectangleShape2D_owlzone")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2065548085]
 sprite_frames = SubResource("SpriteFrames_rihjw")
-frame = 44
-frame_progress = 1.0
+
+[node name="ShadowSprite" type="Sprite2D" parent="." unique_id=623282988]
+position = Vector2(-5.0000076, 234)
+scale = Vector2(0.3399012, 0.68186706)
+texture = ExtResource("2_e5cli")
+
+[node name="ShadowSprite2" type="Sprite2D" parent="." unique_id=13557757]
+position = Vector2(-3.0000007, 191)
+scale = Vector2(0.3399012, 0.68186706)
+texture = ExtResource("2_e5cli")
+
+[node name="ShadowSprite3" type="Sprite2D" parent="." unique_id=1155700270]
+position = Vector2(-5.0000076, 234)
+scale = Vector2(0.17681848, 0.6948614)
+texture = ExtResource("2_e5cli")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1820728332]
+stream = ExtResource("4_uwki2")

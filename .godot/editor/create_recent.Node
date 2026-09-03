@@ -1,3 +1,4 @@
+AudioStreamPlayer2D
 Sprite2D
 CollisionShape2D
 Area2D
@@ -9,6 +10,5 @@ Control
 CanvasLayer
 VideoStreamPlayer
 SubViewport
-AudioStreamPlayer2D
 ColorRect
 VBoxContainer

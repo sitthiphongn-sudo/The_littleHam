@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bantxphs6p5r0" path="res://assets/laser 3.png" id="3_cv38j"]
 [ext_resource type="Texture2D" uid="uid://eurv0k7aip" path="res://assets/drone.png" id="4_ef8x6"]
 [ext_resource type="Script" uid="uid://yud8kuserkvg" path="res://animated_sprite_2d_2.gd" id="5_nmxpg"]
+[ext_resource type="AudioStream" uid="uid://di37uo0h2yqat" path="res://assets/397280__ledhed2222__laser_sustained.wav" id="6_t3koo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w1nnf"]
 atlas = ExtResource("2_t3koo")
@@ -282,5 +283,9 @@ sprite_frames = SubResource("SpriteFrames_uhsdg")
 animation = &"fly"
 frame_progress = 0.011829724
 script = ExtResource("5_nmxpg")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1998859835]
+stream = ExtResource("6_t3koo")
+volume_db = -40.709
 
 [connection signal="body_entered" from="AnimatedSprite2D/Area2D" to="." method="_on_area_2d_body_entered"]

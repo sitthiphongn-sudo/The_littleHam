@@ -1,17 +1,17 @@
 [gd_scene format=3 uid="uid://xy7x6eeb2vm1"]
 
 [ext_resource type="Script" uid="uid://cccfe8yfg6rwj" path="res://scenes/main_game.gd" id="1_0rdsr"]
-[ext_resource type="VideoStream" uid="uid://tr48y11ybbxk" path="res://assets/22.ogv" id="2_ihbck"]
-[ext_resource type="VideoStream" uid="uid://d3dbxgpdphjth" path="res://assets/So.ogv" id="2_o6v7o"]
-[ext_resource type="VideoStream" uid="uid://dnbkk0j67qm7n" path="res://assets/map3.ogv" id="2_wjob3"]
+[ext_resource type="VideoStream" uid="uid://dxjy1a32pkhtk" path="res://assets/map5.ogv" id="2_ibep1"]
 [ext_resource type="VideoStream" uid="uid://cm5jyt3dd1igh" path="res://assets/6_new.ogv" id="3_5luka"]
 [ext_resource type="PackedScene" uid="uid://csvqm72t55ip" path="res://scenes/player.tscn" id="3_d2op2"]
 [ext_resource type="Texture2D" uid="uid://d0r7nisj3sam6" path="res://assets/t.png" id="3_nqdth"]
+[ext_resource type="VideoStream" uid="uid://c2xcwe7wtl6g8" path="res://assets/map6.ogv" id="3_q875d"]
 [ext_resource type="Texture2D" uid="uid://urug4jk0r10o" path="res://assets/map2.png" id="3_ygxny"]
-[ext_resource type="VideoStream" uid="uid://duimaitffeyq0" path="res://assets/2.ogv" id="4_sp04v"]
+[ext_resource type="VideoStream" uid="uid://tr48y11ybbxk" path="res://assets/22.ogv" id="4_q875d"]
 [ext_resource type="Texture2D" uid="uid://cuwxsrr4f3mbh" path="res://assets/map2 (1).png" id="5_5cypo"]
 [ext_resource type="VideoStream" uid="uid://cof4er06iq8gm" path="res://assets/map4.ogv" id="5_8xp80"]
 [ext_resource type="PackedScene" uid="uid://w0p3vybnbrq0" path="res://scenes/spider.tscn" id="5_70vka"]
+[ext_resource type="VideoStream" uid="uid://dfbyh3c1wteqm" path="res://assets/m2_1.ogv" id="6_dvo3n"]
 [ext_resource type="Script" uid="uid://ctx31pf1l8qli" path="res://scenes/perspective_zone.gd" id="6_wi4c7"]
 [ext_resource type="Texture2D" uid="uid://dr14shwywn8o3" path="res://assets/black gradient.png" id="6_ygxny"]
 [ext_resource type="AudioStream" uid="uid://dvobq3nityude" path="res://assets/sound_maingame.wav" id="7_wi4c7"]
@@ -31,11 +31,13 @@
 [ext_resource type="PackedScene" uid="uid://c3yiqxwy2vqlr" path="res://scenes/PauseMenu.tscn" id="21_ibnub"]
 [ext_resource type="Script" uid="uid://cp5w0raev601s" path="res://scenes/EndTriggerZone.gd" id="22_5wboo"]
 [ext_resource type="PackedScene" uid="uid://b5t3ca0gjj83m" path="res://laserjump_2.tscn" id="22_jmxl0"]
+[ext_resource type="Texture2D" uid="uid://cmbgat8yqmrm3" path="res://assets/shadow.png" id="22_q875d"]
 [ext_resource type="Script" uid="uid://cu2kb006lcfr4" path="res://scenes/TutorialHintUI.gd" id="23_6de02"]
 [ext_resource type="PackedScene" uid="uid://byx2j3wir1x6d" path="res://laserjump_3.tscn" id="23_sgdes"]
 [ext_resource type="FontFile" uid="uid://m62b448aeo58" path="res://assets/Back Nature.otf" id="24_hintfont"]
 [ext_resource type="PackedScene" uid="uid://d3cakr4d8kqrl" path="res://testtt2.tscn" id="27_sgdes"]
 [ext_resource type="PackedScene" uid="uid://xa3vvxmvji8g" path="res://testtt3.tscn" id="28_ibep1"]
+[ext_resource type="PackedScene" uid="uid://c3fc56hh1qg4t" path="res://owlcutscene.tscn" id="30_dvo3n"]
 [ext_resource type="PackedScene" uid="uid://dqc7k3v80nl17" path="res://scenes/checkpoint.tscn" id="31_ibep1"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_wjob3"]
@@ -89,7 +91,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-stream = ExtResource("2_ihbck")
+stream = ExtResource("2_ibep1")
 volume_db = -80.0
 autoplay = true
 expand = true
@@ -104,7 +106,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-stream = ExtResource("2_o6v7o")
+stream = ExtResource("3_q875d")
 volume_db = -80.0
 autoplay = true
 expand = true
@@ -119,7 +121,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-stream = ExtResource("2_wjob3")
+stream = ExtResource("4_q875d")
 volume_db = -80.0
 autoplay = true
 expand = true
@@ -149,7 +151,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-stream = ExtResource("4_sp04v")
+stream = ExtResource("6_dvo3n")
 volume_db = -80.0
 autoplay = true
 expand = true
@@ -244,7 +246,6 @@ texture = ExtResource("12_yu8cv")
 centered = false
 
 [node name="Map6" type="Sprite2D" parent="." unique_id=796911701]
-visible = false
 position = Vector2(-46, -3.081251)
 scale = Vector2(0.730539, 0.49662384)
 texture = ExtResource("13_ibnub")
@@ -254,12 +255,12 @@ centered = false
 position = Vector2(-145, -49)
 
 [node name="Enemy" parent="." unique_id=426305332 instance=ExtResource("9_2l77h")]
-position = Vector2(2935, 380.021)
+position = Vector2(4512, 374.8855)
 rotation = 3.1415927
 scale = Vector2(0.81626195, -0.69955754)
 
 [node name="owl" parent="." unique_id=1104382561 instance=ExtResource("16_wdxbp")]
-position = Vector2(4300, 233.14798)
+position = Vector2(3266, 216.71465)
 
 [node name="Spider" parent="." unique_id=1564601214 instance=ExtResource("5_70vka")]
 position = Vector2(6245.0005, 121.19599)
@@ -267,7 +268,7 @@ rotation = 0.37974873
 scale = Vector2(0.47713456, 0.41312802)
 
 [node name="laser 2" parent="." unique_id=509430266 instance=ExtResource("18_dcudo")]
-position = Vector2(1788, 266.01465)
+position = Vector2(1728, 267.0417)
 scale = Vector2(0.96000123, 0.54808414)
 
 [node name="drone2" parent="." unique_id=964690544 instance=ExtResource("19_dp0eu")]
@@ -279,24 +280,49 @@ position = Vector2(2235, 253.68964)
 scale = Vector2(0.9898811, 0.85992515)
 
 [node name="laserjump" parent="." unique_id=1892099697 instance=ExtResource("21_6vdpn")]
-position = Vector2(1851.0001, 325.58548)
+position = Vector2(1913.9998, 256.7709)
 rotation = 0.40983036
-scale = Vector2(-0.26396456, 0.14479603)
+scale = Vector2(-0.26396456, 0.23064627)
+
+[node name="ShadowSprite" type="Sprite2D" parent="laserjump" unique_id=402139234]
+position = Vector2(-4.93869, -432.34125)
+scale = Vector2(-0.11139155, 0.83949375)
+texture = ExtResource("22_q875d")
 
 [node name="laserjump2" parent="." unique_id=1968156570 instance=ExtResource("22_jmxl0")]
-position = Vector2(1819.0001, 330.72092)
+position = Vector2(1767, 312.23343)
 rotation = -1.1191752
-scale = Vector2(0.2710322, 0.2350055)
+scale = Vector2(0.18171582, 0.3085463)
+
+[node name="ShadowSprite2" type="Sprite2D" parent="laserjump2" unique_id=949534962]
+position = Vector2(-4.93869, -432.34125)
+scale = Vector2(-0.11139155, 0.83949375)
+texture = ExtResource("22_q875d")
+
+[node name="ShadowSprite3" type="Sprite2D" parent="laserjump2" unique_id=1312627589]
+position = Vector2(-4.93869, -432.34125)
+scale = Vector2(-0.09668051, 1.037954)
+texture = ExtResource("22_q875d")
 
 [node name="laserjump3" parent="." unique_id=684236990 instance=ExtResource("22_jmxl0")]
 position = Vector2(2016, 330.7209)
 rotation = 0.83261335
 scale = Vector2(0.2711862, 0.19934076)
 
+[node name="ShadowSprite" type="Sprite2D" parent="laserjump3" unique_id=1483636144]
+position = Vector2(-4.93869, -432.34125)
+scale = Vector2(-0.11139155, 0.83949375)
+texture = ExtResource("22_q875d")
+
 [node name="laserjump 3" parent="." unique_id=262508634 instance=ExtResource("23_sgdes")]
 position = Vector2(2318, 337.91043)
 rotation = -0.7053129
 scale = Vector2(0.3960118, 0.17537823)
+
+[node name="ShadowSprite" type="Sprite2D" parent="laserjump 3" unique_id=458716166]
+position = Vector2(-4.93869, -432.34125)
+scale = Vector2(-0.11139155, 0.83949375)
+texture = ExtResource("22_q875d")
 
 [node name="Web_spider" parent="." unique_id=2062916647 instance=ExtResource("17_yu8cv")]
 position = Vector2(5280, 174.60422)
@@ -327,16 +353,65 @@ position = Vector2(6860, 321.47717)
 position = Vector2(6675, 313.26053)
 
 [node name="ท่อน้ำ1" parent="." unique_id=902260136 instance=ExtResource("21_307no")]
-position = Vector2(3978.0002, 354.3438)
+position = Vector2(2709, 330.72092)
 scale = Vector2(0.10554913, 0.15294674)
 
+[node name="ShadowSprite" type="Sprite2D" parent="ท่อน้ำ1" unique_id=1279183888]
+position = Vector2(28.422459, 60.437714)
+scale = Vector2(1.4044902, 0.83949375)
+texture = ExtResource("22_q875d")
+
+[node name="ShadowSprite2" type="Sprite2D" parent="ท่อน้ำ1" unique_id=142669564]
+position = Vector2(28.422459, 60.437714)
+scale = Vector2(0.76028126, 0.83949375)
+texture = ExtResource("22_q875d")
+
+[node name="ShadowSprite3" type="Sprite2D" parent="ท่อน้ำ1" unique_id=176659918]
+position = Vector2(28.422459, 60.437714)
+scale = Vector2(0.76028126, 0.83949375)
+texture = ExtResource("22_q875d")
+
 [node name="ท่อน้ำ2" parent="." unique_id=1785225106 instance=ExtResource("27_sgdes")]
-position = Vector2(4238.0005, 349.20844)
+position = Vector2(3000.9995, 354.34384)
 scale = Vector2(0.1079556, 0.20142272)
 
+[node name="ShadowSprite2" type="Sprite2D" parent="ท่อน้ำ2" unique_id=1091063254]
+position = Vector2(28.422459, 60.437714)
+scale = Vector2(1.344794, 0.83949375)
+texture = ExtResource("22_q875d")
+
+[node name="ShadowSprite3" type="Sprite2D" parent="ท่อน้ำ2" unique_id=1865285202]
+position = Vector2(28.422459, 60.437714)
+scale = Vector2(0.76028126, 0.83949375)
+texture = ExtResource("22_q875d")
+
+[node name="ShadowSprite4" type="Sprite2D" parent="ท่อน้ำ2" unique_id=1705665742]
+position = Vector2(28.422459, 60.437714)
+scale = Vector2(1.5013266, 0.83949375)
+texture = ExtResource("22_q875d")
+
 [node name="ท่อน้ำ3" parent="." unique_id=2034907371 instance=ExtResource("28_ibep1")]
-position = Vector2(4499.9995, 353.31677)
+position = Vector2(3347.0002, 373.8584)
 scale = Vector2(0.13272391, 0.14860213)
+
+[node name="ShadowSprite2" type="Sprite2D" parent="ท่อน้ำ3" unique_id=1959647070]
+position = Vector2(28.422459, 60.437714)
+scale = Vector2(0.76028126, 0.83949375)
+texture = ExtResource("22_q875d")
+
+[node name="ShadowSprite3" type="Sprite2D" parent="ท่อน้ำ3" unique_id=1813747460]
+position = Vector2(28.422459, 60.437714)
+scale = Vector2(1.6644137, 0.83949375)
+texture = ExtResource("22_q875d")
+
+[node name="ShadowSprite4" type="Sprite2D" parent="ท่อน้ำ3" unique_id=1773626965]
+position = Vector2(28.422459, 60.437714)
+scale = Vector2(1.1240758, 1.1473262)
+texture = ExtResource("22_q875d")
+
+[node name="owlcutsecene" parent="." unique_id=198915940 instance=ExtResource("30_dvo3n")]
+position = Vector2(940, 173.57713)
+scale = Vector2(0.14151166, 0.14960577)
 
 [node name="PlayerSpawn" type="Marker2D" parent="." unique_id=1707637133]
 position = Vector2(368, 359.47925)
@@ -469,6 +544,7 @@ position = Vector2(46, 400)
 script = ExtResource("6_wi4c7")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PerspectiveZone" unique_id=1069447504]
+visible = false
 position = Vector2(-85, -35.3853)
 polygon = PackedVector2Array(402, -88.79367, -27, -13, 208, 82.72931, 482, 98.13556, 2876, 56.025146, 3424, 57.052216, 6266, 58.079315, 7055, 67.32306, 7531, 53.970978, 7335, -62.089478, 7140, -39.493652, 6946, -30.249878, 6876, -87.76657, 6370, -91.87491, 6328, -29.222809, 5970, -43.60199, 4931, -57.98114, 4783, -26.141571, 4576, -46.683228, 4512.38, -19.743164, 4340, -49.764465, 3827, -53.872803, 3594, -22.033234, 3324, -80.576996, 2956, -90.84784, 2506, -45.65616, 2431, -27.731262, 2372, -36.975006, 2242, -73.95001, 1744, -52.381256, 1405, -18.487488, 1009, -75.44156, 840, -90.84784)
 
@@ -479,6 +555,7 @@ pitch_scale = 0.84
 autoplay = true
 
 [node name="PauseMenu" parent="." unique_id=356230764 instance=ExtResource("21_ibnub")]
+visible = false
 
 [node name="Area2D" type="Area2D" parent="." unique_id=94109596]
 script = ExtResource("22_5wboo")
